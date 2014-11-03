@@ -33,7 +33,7 @@ public class FlowController : MonoBehaviour
 
 	public bool GetIsCanSwap()
 	{
-		return m_IsNeedToValidate;
+		return !m_IsNeedToValidate;
 	}
 
 	public void NewGemDropped()

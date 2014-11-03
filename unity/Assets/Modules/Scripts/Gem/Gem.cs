@@ -8,6 +8,8 @@ public class Gem : MonoBehaviour {
 
 	private GemSlot m_GemSlot;
 
+	public GemSlot MyGemSlot {get {return m_GemSlot;}}
+
 	private Transform myTransform;
 	private bool m_IsMoving;
 	// Use this for initialization

@@ -180,6 +180,19 @@ public class GemSlot : MonoBehaviour {
 			}
 		}
 	}
+
+	public bool IsGemAround(Gem a_Gem)
+	{
+		if(a_Gem != null)
+		{
+			bool left = (m_LeftSlot != null) && (m_LeftSlot.m_Gem == a_Gem);
+			bool right = (m_RightSlot != null) && (m_RightSlot.m_Gem == a_Gem);
+			bool top = (m_UpSlot != null) && (m_UpSlot.m_Gem == a_Gem);
+			bool down = (m_DownSlot != null) && (m_DownSlot.m_Gem == a_Gem);
+			return  left || right || top || down;
+		}
+		return false;
+	}
 	
 	void OnDrawGizmos()
 	{

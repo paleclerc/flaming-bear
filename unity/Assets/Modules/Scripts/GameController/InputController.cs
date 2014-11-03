@@ -14,7 +14,7 @@ public class InputController : MonoBehaviour
 		cursorGo.transform.parent = transform;
 
 		m_SelectedCursorInstance = cursorGo.GetComponent<SelectionCursor>();
-		m_SelectedCursorInstance.DisplayCusor(false);
+		m_SelectedCursorInstance.UnSelectAll();
 	}
 	
 	// Update is called once per frame
@@ -23,9 +23,11 @@ public class InputController : MonoBehaviour
 
 	}
 
-	public void ClickOnGem (Gem m_Gem)
+	public void ClickOnGem (Gem a_Gem)
 	{
-		m_SelectedCursorInstance.SetPosition(m_Gem.gameObject.transform.position);
-		m_SelectedCursorInstance.DisplayCusor(true);
+		if(GameController.Instance.GetFlowController.GetIsCanSwap())
+		{
+			m_SelectedCursorInstance.SelectGem(a_Gem);
+		}
 	}
 }
