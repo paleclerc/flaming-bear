@@ -25,7 +25,7 @@ public class SelectionCursor : MonoBehaviour {
 		{
 			if(IsCursorNeighborGem(a_GemToSelect))
 			{
-				SwapGem();
+				SwapGem(a_GemToSelect);
 			}
 			else
 			{
@@ -46,9 +46,10 @@ public class SelectionCursor : MonoBehaviour {
 		return false;
 	}
 
-	void SwapGem ()
+	void SwapGem (Gem a_GemToSelect)
 	{
-		Debug.Log("PAL :: SwapGem");
+		GameController.Instance.GetFlowController.SwapGem(a_GemToSelect, m_SelectedGem);
+		UnSelectAll();
 	}
 
 	private void DisplayCusor(bool a_IsDisplayed)

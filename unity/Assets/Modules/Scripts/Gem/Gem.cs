@@ -12,6 +12,7 @@ public class Gem : MonoBehaviour {
 
 	private Transform myTransform;
 	private bool m_IsMoving;
+
 	// Use this for initialization
 	void Start () {
 		myTransform = transform;
@@ -23,6 +24,7 @@ public class Gem : MonoBehaviour {
 		if(m_IsMoving)
 		{
 			Vector3 movement = m_GemSlot.transform.position - myTransform.position;
+
 			if(movement.magnitude < m_DroppingSpeed)
 			{
 				m_IsMoving = false;
@@ -59,6 +61,26 @@ public class Gem : MonoBehaviour {
 			oldGemSlot.MakeTopGemDrop();
 		}
 	}
+
+	public void ExchangeSlot(Gem a_SecondGemSwap)
+	{
+		GemSlot oldGemSlot = m_GemSlot;
+
+		m_GemSlot = a_SecondGemSwap.MyGemSlot;
+		m_GemSlot.m_Gem = this;
+
+		a_SecondGemSwap.ReceiveOtherSlot(oldGemSlot);
+
+		m_IsMoving = true;
+	}
+
+	public void ReceiveOtherSlot (GemSlot a_SecondGemSwap)
+	{
+		m_GemSlot = a_SecondGemSwap;
+		m_GemSlot.m_Gem = this;
+		m_IsMoving = true;
+	}
+
 
 	void CheckNextGemSlot ()
 	{

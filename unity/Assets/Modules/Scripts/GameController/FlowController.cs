@@ -7,6 +7,7 @@ public class FlowController : MonoBehaviour
 	public List<GemSlot> m_GemSlot;
 
 	private bool m_IsNeedToValidate;
+	private GemSwappingData m_GemSwapData = null;
 
 	// Use this for initialization
 	void Start ()
@@ -56,6 +57,25 @@ public class FlowController : MonoBehaviour
 		m_IsNeedToValidate = true;
 	}
 
+	public void SwapGem(Gem a_FirstGem, Gem a_SecondGem)
+	{
+		m_GemSwapData = new GemSwappingData();
+		m_GemSwapData.m_IsSwapHalfCompleted = false;
+		m_GemSwapData.m_FirstGemSwap = a_FirstGem;
+		m_GemSwapData.m_SecondGemSwap = a_SecondGem;
+
+		m_IsNeedToValidate = true;
+
+		SwapGemData();
+	}
+
+	void SwapGemData()
+	{
+		m_IsNeedToValidate = true;
+
+		m_GemSwapData.m_FirstGemSwap.ExchangeSlot(m_GemSwapData.m_SecondGemSwap);
+	}
+
 	public void UnregisterGemSlot(GemSlot a_GemSlot)
 	{
 		if(m_GemSlot.Contains(a_GemSlot))
@@ -101,13 +121,40 @@ public class FlowController : MonoBehaviour
 				}
 			}
 		}
+		bool gemDeleted = false;
 		foreach (List<GemSlot> listGemSlot in allResult)
 		{
 
 			foreach (GemSlot gemSlot in listGemSlot)
 			{
+				gemDeleted = true;
 				gemSlot.DeleteGem();
 			}
 		}
+
+		if(!gemDeleted && m_GemSwapData != null)
+		{
+
+			if(m_GemSwapData.m_IsSwapHalfCompleted)
+			{ 
+				m_GemSwapData = null;
+			}
+			else
+			{
+				m_GemSwapData.m_IsSwapHalfCompleted = true;
+				SwapGemData();
+			}
+		}
+		else
+		{
+			m_GemSwapData = null;
+		}
 	}
+}
+
+public class GemSwappingData
+{
+	public Gem m_FirstGemSwap;
+	public Gem m_SecondGemSwap;
+	public bool m_IsSwapHalfCompleted;
 }
