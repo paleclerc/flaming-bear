@@ -13,6 +13,11 @@ public class GameController : MonoBehaviour
 	public GameObject m_InputControllerPrefab;
 	private InputController m_InputControllerComponent;
 	public InputController GetInputController {get {return m_InputControllerComponent;}}
+
+	
+	public GameObject m_GameUIFlowControllerPrefab;
+	private GameUIFlowController m_GameUIFlowControllerComponent;
+	public GameUIFlowController GetGameUIFlowController {get {return m_GameUIFlowControllerComponent;}}
 	#endregion
 
 	public Action OnGameControllerInitialized = delegate { };
@@ -37,6 +42,7 @@ public class GameController : MonoBehaviour
 	{
 		CreateController<FlowController>(m_FlowControllerPrefab, ref m_FlowControllerComponent);
 		CreateController<InputController>(m_InputControllerPrefab, ref m_InputControllerComponent);
+		CreateController<GameUIFlowController>(m_GameUIFlowControllerPrefab, ref m_GameUIFlowControllerComponent);
 
 		OnGameControllerInitialized();
 	}

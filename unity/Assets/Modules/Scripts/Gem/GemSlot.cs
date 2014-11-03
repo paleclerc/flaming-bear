@@ -115,8 +115,6 @@ public class GemSlot : MonoBehaviour {
 		GameController.Instance.GetFlowController.ResetValidation();
 		List<GemSlot> listGemSlot = new List<GemSlot>();
 		ValidateHorizontal(listGemSlot);
-
-		Debug.Log("PAL :: DebugTestHorizontal :: " +listGemSlot.Count);
 	}
 
 	[ContextMenu("TestVertical")]
@@ -125,8 +123,6 @@ public class GemSlot : MonoBehaviour {
 		GameController.Instance.GetFlowController.ResetValidation();
 		List<GemSlot> listGemSlot = new List<GemSlot>();
 		ValidateVertical(listGemSlot);
-		
-		Debug.Log("PAL :: DebugTestVertical :: " +listGemSlot.Count);
 	}
 
 	public void ValidateHorizontal(List<GemSlot> a_ListGemSlot, Gem a_Gem = null)

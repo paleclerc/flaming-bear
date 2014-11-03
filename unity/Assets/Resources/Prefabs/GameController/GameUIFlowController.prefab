@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: _FlowController
+  m_Name: GameUIFlowController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,10 +36,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41819df3f5908e042bdc1ee991f66544, type: 3}
+  m_Script: {fileID: 11500000, guid: ab3708b3ad5d73d4eadefe43da810caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GemSlot: []
+  m_GameUIControllerPrefab: {fileID: 100020, guid: 50adb2a0c65ec7644af8e8bacc439552,
+    type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -9,10 +9,21 @@ public class FlowController : MonoBehaviour
 	private bool m_IsNeedToValidate;
 	private GemSwappingData m_GemSwapData = null;
 
+	private int m_RemainingMove;
+	private int m_Score;
+	private bool m_IsInit;
+
 	// Use this for initialization
 	void Start ()
 	{
+		m_IsInit = false;
+		m_RemainingMove = 20;
+		m_Score = 0;
+	}
 
+	public int GetRamainingMove ()
+	{
+		return m_RemainingMove;
 	}
 	
 	// Update is called once per frame
@@ -29,6 +40,10 @@ public class FlowController : MonoBehaviour
 			}
 
 			ValidateGem();
+		}
+		else if(!m_IsInit)
+		{
+			m_IsInit = true;
 		}
 	}
 
@@ -94,7 +109,6 @@ public class FlowController : MonoBehaviour
 
 	void ValidateGem ()
 	{
-		m_IsNeedToValidate = false;
 		ResetValidation();
 
 		List<List<GemSlot>> allResult = new List<List<GemSlot>>();
@@ -132,12 +146,20 @@ public class FlowController : MonoBehaviour
 			}
 		}
 
+		if(!gemDeleted)
+		{
+			m_IsNeedToValidate = false;
+		}
+
+		AddScore(allResult);
+
 		if(!gemDeleted && m_GemSwapData != null)
 		{
 
 			if(m_GemSwapData.m_IsSwapHalfCompleted)
 			{ 
 				m_GemSwapData = null;
+				RemoveMove();
 			}
 			else
 			{
@@ -147,7 +169,33 @@ public class FlowController : MonoBehaviour
 		}
 		else
 		{
-			m_GemSwapData = null;
+			if(m_GemSwapData != null)
+			{
+				m_GemSwapData = null;
+				RemoveMove();
+			}
+		}
+	}
+
+	void RemoveMove ()
+	{
+		m_RemainingMove --;
+		GameController.Instance.GetGameUIFlowController.UpdateMove(m_RemainingMove);
+	}
+
+	
+	void AddScore(List<List<GemSlot>> a_Result)
+	{
+		if(m_IsInit)
+		{
+			int score = 0;
+			foreach (List<GemSlot> listGemSlot in a_Result)
+			{
+				score += 1000 + (listGemSlot.Count-3)*500;
+			}
+
+			m_Score += score;
+			GameController.Instance.GetGameUIFlowController.UpdateScore(m_Score);
 		}
 	}
 }
