@@ -9,7 +9,7 @@ public class MainMenuDebug : MonoBehaviour {
 	{
 		if (GUI.Button(new Rect(300, 300, 300, 150), "PLAY"))
 		{
-			Application.LoadLevel (m_PlayScene); 
+			SceneManager.Instance.ChangeScene(m_PlayScene);
 		}
 	}
 }

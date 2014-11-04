@@ -21,6 +21,12 @@ public class FlowController : MonoBehaviour
 		m_Score = 0;
 	}
 
+	void InitCompleted ()
+	{
+		m_IsInit = true;
+		SceneManager.Instance.SceneLoadingCompleted();
+	}
+
 	public int GetRamainingMove ()
 	{
 		return m_RemainingMove;
@@ -43,7 +49,7 @@ public class FlowController : MonoBehaviour
 		}
 		else if(!m_IsInit)
 		{
-			m_IsInit = true;
+			InitCompleted();
 		}
 	}
 
