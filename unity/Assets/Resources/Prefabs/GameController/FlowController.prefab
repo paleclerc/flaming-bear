@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GemSlot: []
-  m_TargetScore: 30000
+  m_TargetScore: 20000
   m_RemainingMove: 5
 --- !u!1001 &100100000
 Prefab:

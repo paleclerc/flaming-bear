@@ -1,10 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class GameUIController : MonoBehaviour
 {
 	public GameUIView m_View;
 	private GameUIModel m_Model;
+	public Action OnOptionEvent = delegate { };
+
+	void Start()
+	{
+		m_View.OnOptionClick += OnOptionClick;
+	}
 
 	public void Init(int a_RemainingMove)
 	{
@@ -48,5 +55,10 @@ public class GameUIController : MonoBehaviour
 		m_Model = a_Model;
 
 		UpdateView();
+	}
+
+	void OnOptionClick ()
+	{
+		OnOptionEvent();
 	}
 }

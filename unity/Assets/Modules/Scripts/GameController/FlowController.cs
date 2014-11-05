@@ -7,6 +7,9 @@ public class FlowController : MonoBehaviour
 	public List<GemSlot> m_GemSlot;
 	public int m_TargetScore;
 	public int m_RemainingMove;
+	private bool m_IsPaused;
+
+	public bool IsPaused {get {return m_IsPaused;}}
 
 	private bool m_IsNeedToValidate;
 	private GemSwappingData m_GemSwapData = null;
@@ -23,6 +26,7 @@ public class FlowController : MonoBehaviour
 		m_Score = 0;
 		m_IsGameFinish = false;
 		m_ResultScreenDisplayed = false;
+		m_IsPaused = false;
 	}
 
 	void InitCompleted ()
@@ -31,6 +35,7 @@ public class FlowController : MonoBehaviour
 		SceneManager.Instance.SceneLoadingCompleted();
 	}
 
+	#region Event Game
 	public void LeaveLevel()
 	{
 		SceneManager.Instance.ChangeScene(SceneManager.Instance.m_SceneName.MainMenu);
@@ -40,6 +45,19 @@ public class FlowController : MonoBehaviour
 	{
 		SceneManager.Instance.ChangeScene(SceneManager.Instance.m_SceneName.Gameplay);
 	}
+
+	public void PauseGame ()
+	{
+		m_IsPaused = true;
+		GameController.Instance.GetGameUIFlowController.DisplayOptionMenu();
+	}
+
+	public void ResumeGame ()
+	{
+		GameController.Instance.GetGameUIFlowController.RemoveOptionMenu();
+		m_IsPaused = false;
+	}
+	#endregion
 
 	public int GetRamainingMove ()
 	{
@@ -74,7 +92,7 @@ public class FlowController : MonoBehaviour
 
 	public bool GetIsCanSwap()
 	{
-		return !m_IsNeedToValidate && !m_IsGameFinish;
+		return !m_IsNeedToValidate && !m_IsGameFinish && !m_IsPaused;
 	}
 
 	public void NewGemDropped()

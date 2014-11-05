@@ -43,6 +43,8 @@ MonoBehaviour:
     type: 2}
   m_ResultScreenLoseUIControllerPrefab: {fileID: 100012, guid: ddcb2e943cb1a0747ba8330c3dd744e8,
     type: 2}
+  m_OptionMenuUIControllerPrefab: {fileID: 100012, guid: 75bcbea959ed35e468b5734384c1b28c,
+    type: 2}
   m_GameUIControllerPrefab: {fileID: 100020, guid: 50adb2a0c65ec7644af8e8bacc439552,
     type: 2}
 --- !u!1001 &100100000

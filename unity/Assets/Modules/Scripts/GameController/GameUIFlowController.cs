@@ -5,28 +5,36 @@ public class GameUIFlowController : MonoBehaviour
 {
 	public GameObject m_ResultScreenWinUIControllerPrefab;
 	public GameObject m_ResultScreenLoseUIControllerPrefab;
+	public GameObject m_OptionMenuUIControllerPrefab;
 
 	public GameObject m_GameUIControllerPrefab;
 	private GameUIController m_GameUIController;
+	private OptionMenuUIController m_OptionMenuUIController;
 
 	// Use this for initialization
 	void Start () 
 	{
-		GameObject go = CreateScreen(m_GameUIControllerPrefab);
-		m_GameUIController = go.GetComponent<GameUIController>();
-
-		m_GameUIController.Init(GameController.Instance.GetFlowController.GetRamainingMove());
+		CreateGameScreen();
 	}
 
 	private GameObject CreateScreen(GameObject a_Prefab)
 	{
 		GameObject go = (GameObject)Instantiate(a_Prefab);
 		go.transform.parent = this.transform;
-
+		
 		return go;
 	}
 
-	
+	#region Game Screen
+	void CreateGameScreen ()
+	{
+		GameObject go = CreateScreen(m_GameUIControllerPrefab);
+		m_GameUIController = go.GetComponent<GameUIController>();
+
+		m_GameUIController.OnOptionEvent += GameController.Instance.GetFlowController.PauseGame;
+		m_GameUIController.Init(GameController.Instance.GetFlowController.GetRamainingMove());
+	}
+
 	public void UpdateScore(int a_Value)
 	{
 		m_GameUIController.UpdateScore(a_Value);
@@ -36,7 +44,9 @@ public class GameUIFlowController : MonoBehaviour
 	{
 		m_GameUIController.UpdateMove(a_Value);
 	}
+	#endregion
 
+	#region Result Screen
 	public void DisplayResultScreen(bool a_IsWin, int a_Score, int a_TargetScore)
 	{
 		GameObject go = null;
@@ -59,4 +69,27 @@ public class GameUIFlowController : MonoBehaviour
 
 		controller.Init(a_Score, a_TargetScore);
 	}
+	#endregion
+
+	#region Option Menu
+	public void DisplayOptionMenu()
+	{
+		if(m_OptionMenuUIController == null)
+		{
+			GameObject go = CreateScreen(m_OptionMenuUIControllerPrefab);
+			m_OptionMenuUIController = go.GetComponent<OptionMenuUIController>();
+			m_OptionMenuUIController.OnExitEvent += GameController.Instance.GetFlowController.LeaveLevel;
+			m_OptionMenuUIController.OnResumeEvent += GameController.Instance.GetFlowController.ResumeGame;
+			m_OptionMenuUIController.Init();
+		}
+	}
+
+	public void RemoveOptionMenu()
+	{
+		if(m_OptionMenuUIController != null)
+		{
+			Destroy(m_OptionMenuUIController.gameObject);
+		}
+	}
+	#endregion
 }
