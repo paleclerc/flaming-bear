@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class SceneManager : MonoBehaviour 
 {
@@ -12,8 +13,8 @@ public class SceneManager : MonoBehaviour
 	}
 	#endregion
 
+	public SceneName m_SceneName;
 	public GameObject m_DefaultTransition;
-	public string m_EmptySceneTransition;
 	private bool m_BetweenScene;
 	private bool m_SceneLoadingCompleted;
 
@@ -39,7 +40,7 @@ public class SceneManager : MonoBehaviour
 			yield return 0;
 		}
 
-		Application.LoadLevel(m_EmptySceneTransition); 
+		Application.LoadLevel(m_SceneName.EmptyScene); 
 
 		yield return 0;
 
@@ -58,10 +59,19 @@ public class SceneManager : MonoBehaviour
 		}
 
 		Destroy(currentTransition);
+		m_BetweenScene = false;
 	}
 
 	public void SceneLoadingCompleted()
 	{
 		m_SceneLoadingCompleted = true;
 	}
+}
+
+[Serializable]
+public class SceneName
+{
+	public string EmptyScene;
+	public string MainMenu;
+	public string Gameplay;
 }

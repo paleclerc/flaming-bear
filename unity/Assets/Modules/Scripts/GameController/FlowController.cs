@@ -5,26 +5,40 @@ using System.Collections.Generic;
 public class FlowController : MonoBehaviour	
 {
 	public List<GemSlot> m_GemSlot;
+	public int m_TargetScore;
+	public int m_RemainingMove;
 
 	private bool m_IsNeedToValidate;
 	private GemSwappingData m_GemSwapData = null;
 
-	private int m_RemainingMove;
 	private int m_Score;
 	private bool m_IsInit;
+	private bool m_IsGameFinish;
+	private bool m_ResultScreenDisplayed;
 
 	// Use this for initialization
 	void Start ()
 	{
 		m_IsInit = false;
-		m_RemainingMove = 20;
 		m_Score = 0;
+		m_IsGameFinish = false;
+		m_ResultScreenDisplayed = false;
 	}
 
 	void InitCompleted ()
 	{
 		m_IsInit = true;
 		SceneManager.Instance.SceneLoadingCompleted();
+	}
+
+	public void LeaveLevel()
+	{
+		SceneManager.Instance.ChangeScene(SceneManager.Instance.m_SceneName.MainMenu);
+	}
+
+	public void ReplayLevel()
+	{
+		SceneManager.Instance.ChangeScene(SceneManager.Instance.m_SceneName.Gameplay);
 	}
 
 	public int GetRamainingMove ()
@@ -51,11 +65,16 @@ public class FlowController : MonoBehaviour
 		{
 			InitCompleted();
 		}
+		else if(m_IsGameFinish && !m_ResultScreenDisplayed)
+		{
+			m_ResultScreenDisplayed = true;
+			GameController.Instance.GetGameUIFlowController.DisplayResultScreen((m_TargetScore<m_Score), m_Score, m_TargetScore);
+		}
 	}
 
 	public bool GetIsCanSwap()
 	{
-		return !m_IsNeedToValidate;
+		return !m_IsNeedToValidate && !m_IsGameFinish;
 	}
 
 	public void NewGemDropped()
@@ -187,6 +206,11 @@ public class FlowController : MonoBehaviour
 	{
 		m_RemainingMove --;
 		GameController.Instance.GetGameUIFlowController.UpdateMove(m_RemainingMove);
+
+		if(m_RemainingMove <= 0)
+		{
+			m_IsGameFinish = true;
+		}
 	}
 
 	
