@@ -253,7 +253,7 @@ GameObject:
   - 4: {fileID: 1512777214}
   - 114: {fileID: 1512777213}
   m_Layer: 0
-  m_Name: MainMenuDebug
+  m_Name: Launcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -267,9 +267,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1512777212}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd62784870936b34083611995de31ac8, type: 3}
+  m_Script: {fileID: 11500000, guid: 707b4754139d33e47ba87c424a9ba006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_LauncherUIControllerPrefab: {fileID: 100016, guid: adce1ba26f800dc4fa7bf40b8d4f1352,
+    type: 2}
 --- !u!4 &1512777214
 Transform:
   m_ObjectHideFlags: 0
