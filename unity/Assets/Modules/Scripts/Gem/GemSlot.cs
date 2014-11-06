@@ -63,13 +63,31 @@ public class GemSlot : MonoBehaviour {
 
 	public bool IsGemMoving()
 	{
-		if(m_Gem == null)
+		if(m_Gem != null)
 		{
-			return true;
+			return m_Gem.IsMoving();
+		}
+		
+		if(m_UpSlot != null)
+		{
+			return m_UpSlot.IsGemMoving();
 		}
 
-		return m_Gem.IsMoving();
+		return false;
 	}
+
+	/*internal bool CheckUpHaveGem()
+	{
+		if(m_Gem != null)
+		{
+			return m_Gem.IsMoving();
+		}
+		
+		if(m_UpSlot != null)
+		{
+			m_UpSlot.CheckUpHaveGem();
+		}
+	}*/
 
 	public bool GetHaveGem ()
 	{
@@ -134,19 +152,22 @@ public class GemSlot : MonoBehaviour {
 			{
 				compareGem = m_Gem;
 			}
-			if(m_Gem.m_GemInfo.m_GemType == compareGem.m_GemInfo.m_GemType)
+			if(m_Gem != null && compareGem != null)
 			{
-				m_IsCheckHorizontal = true;
-				if(m_RightSlot != null)
+				if(m_Gem.m_GemInfo.m_GemType == compareGem.m_GemInfo.m_GemType)
 				{
-					m_RightSlot.ValidateHorizontal(a_ListGemSlot, m_Gem);
-				}
-				if(m_LeftSlot != null)
-				{
-					m_LeftSlot.ValidateHorizontal(a_ListGemSlot, m_Gem);
-				}
+					m_IsCheckHorizontal = true;
+					if(m_RightSlot != null)
+					{
+						m_RightSlot.ValidateHorizontal(a_ListGemSlot, m_Gem);
+					}
+					if(m_LeftSlot != null)
+					{
+						m_LeftSlot.ValidateHorizontal(a_ListGemSlot, m_Gem);
+					}
 
-				a_ListGemSlot.Add(this);
+					a_ListGemSlot.Add(this);
+				}
 			}
 		}
 	}
@@ -160,19 +181,22 @@ public class GemSlot : MonoBehaviour {
 			{
 				compareGem = m_Gem;
 			}
-			if(m_Gem.m_GemInfo.m_GemType == compareGem.m_GemInfo.m_GemType)
+			if(m_Gem != null && compareGem != null)
 			{
-				m_IsCheckVertical = true;
-				if(m_UpSlot != null)
+				if(m_Gem.m_GemInfo.m_GemType == compareGem.m_GemInfo.m_GemType)
 				{
-					m_UpSlot.ValidateVertical(a_ListGemSlot, m_Gem);
+					m_IsCheckVertical = true;
+					if(m_UpSlot != null)
+					{
+						m_UpSlot.ValidateVertical(a_ListGemSlot, m_Gem);
+					}
+					if(m_DownSlot != null)
+					{
+						m_DownSlot.ValidateVertical(a_ListGemSlot, m_Gem);
+					}
+					
+					a_ListGemSlot.Add(this);
 				}
-				if(m_DownSlot != null)
-				{
-					m_DownSlot.ValidateVertical(a_ListGemSlot, m_Gem);
-				}
-				
-				a_ListGemSlot.Add(this);
 			}
 		}
 	}
@@ -379,43 +403,44 @@ public class GemSlot : MonoBehaviour {
 	public bool ExistPossibleMove ()
 	{
 		List<GemEnum> mustIgnoreGem;
-
-		if(m_UpSlot != null)
+		if(m_Gem != null)
 		{
-			mustIgnoreGem = m_UpSlot.FindGemToNotUse(DirectionSlot.DOWN);
-			if(mustIgnoreGem.Contains(m_Gem.m_GemInfo.m_GemType))
+			if(m_UpSlot != null)
 			{
-				return true;
+				mustIgnoreGem = m_UpSlot.FindGemToNotUse(DirectionSlot.DOWN);
+				if(mustIgnoreGem.Contains(m_Gem.m_GemInfo.m_GemType))
+				{
+					return true;
+				}
+			}
+
+			if(m_DownSlot != null)
+			{
+				mustIgnoreGem = m_DownSlot.FindGemToNotUse(DirectionSlot.UP);
+				if(mustIgnoreGem.Contains(m_Gem.m_GemInfo.m_GemType))
+				{
+					return true;
+				}
+			}
+
+			if(m_LeftSlot != null)
+			{
+				mustIgnoreGem = m_LeftSlot.FindGemToNotUse(DirectionSlot.RIGHT);
+				if(mustIgnoreGem.Contains(m_Gem.m_GemInfo.m_GemType))
+				{
+					return true;
+				}
+			}
+
+			if(m_RightSlot != null)
+			{
+				mustIgnoreGem = m_RightSlot.FindGemToNotUse(DirectionSlot.LEFT);
+				if(mustIgnoreGem.Contains(m_Gem.m_GemInfo.m_GemType))
+				{
+					return true;
+				}
 			}
 		}
-
-		if(m_DownSlot != null)
-		{
-			mustIgnoreGem = m_DownSlot.FindGemToNotUse(DirectionSlot.UP);
-			if(mustIgnoreGem.Contains(m_Gem.m_GemInfo.m_GemType))
-			{
-				return true;
-			}
-		}
-
-		if(m_LeftSlot != null)
-		{
-			mustIgnoreGem = m_LeftSlot.FindGemToNotUse(DirectionSlot.RIGHT);
-			if(mustIgnoreGem.Contains(m_Gem.m_GemInfo.m_GemType))
-			{
-				return true;
-			}
-		}
-
-		if(m_RightSlot != null)
-		{
-			mustIgnoreGem = m_RightSlot.FindGemToNotUse(DirectionSlot.LEFT);
-			if(mustIgnoreGem.Contains(m_Gem.m_GemInfo.m_GemType))
-			{
-				return true;
-			}
-		}
-
 
 		return false;
 	}

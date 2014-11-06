@@ -4910,34 +4910,16 @@ MonoBehaviour:
       m_DisplayName: Default
       m_DropTable:
       - m_GemType: 0
-        m_DropChanceWeight: 50
+        m_DropChanceWeight: 20
       - m_GemType: 1
-        m_DropChanceWeight: 50
+        m_DropChanceWeight: 20
       - m_GemType: 2
-        m_DropChanceWeight: 50
+        m_DropChanceWeight: 20
       - m_GemType: 3
-        m_DropChanceWeight: 50
-    m_OtherDropTable:
-    - m_DisplayName: A
-      m_DropTable:
-      - m_GemType: 5
-        m_DropChanceWeight: 100
-    - m_DisplayName: B
-      m_DropTable:
-      - m_GemType: 6
-        m_DropChanceWeight: 100
-    - m_DisplayName: C
-      m_DropTable:
-      - m_GemType: 7
-        m_DropChanceWeight: 100
-    - m_DisplayName: D
-      m_DropTable:
-      - m_GemType: 8
-        m_DropChanceWeight: 100
-    - m_DisplayName: E
-      m_DropTable:
-      - m_GemType: 0
-        m_DropChanceWeight: 100
+        m_DropChanceWeight: 20
+      - m_GemType: 4
+        m_DropChanceWeight: 20
+    m_OtherDropTable: []
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4955,7 +4937,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 0}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 0
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400004
 MonoBehaviour:
@@ -4974,7 +4956,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400002}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 2
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400006
 MonoBehaviour:
@@ -4993,7 +4975,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400004}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 0
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400008
 MonoBehaviour:
@@ -5012,7 +4994,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400006}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 2
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400012
 MonoBehaviour:
@@ -5031,7 +5013,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 0}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 2
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400014
 MonoBehaviour:
@@ -5050,7 +5032,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400012}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 0
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400016
 MonoBehaviour:
@@ -5069,7 +5051,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400014}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 2
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400018
 MonoBehaviour:
@@ -5088,7 +5070,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400016}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 0
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400020
 MonoBehaviour:
@@ -5107,7 +5089,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 0}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 3
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400022
 MonoBehaviour:
@@ -5126,7 +5108,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400020}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 1
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400024
 MonoBehaviour:
@@ -5145,7 +5127,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400022}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 3
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400026
 MonoBehaviour:
@@ -5164,7 +5146,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400024}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 1
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400030
 MonoBehaviour:
@@ -5183,7 +5165,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 0}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 1
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400032
 MonoBehaviour:
@@ -5202,7 +5184,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400030}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 3
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400034
 MonoBehaviour:
@@ -5221,7 +5203,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400032}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 0
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400036
 MonoBehaviour:
@@ -5240,7 +5222,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400034}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 4
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400038
 MonoBehaviour:
@@ -5259,7 +5241,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 0}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 0
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400040
 MonoBehaviour:
@@ -5278,7 +5260,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400038}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 2
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400042
 MonoBehaviour:
@@ -5297,7 +5279,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400040}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 0
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400044
 MonoBehaviour:
@@ -5316,7 +5298,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400042}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 2
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400048
 MonoBehaviour:
@@ -5335,7 +5317,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 0}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 2
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400050
 MonoBehaviour:
@@ -5354,7 +5336,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400048}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 0
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400052
 MonoBehaviour:
@@ -5373,7 +5355,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400050}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 2
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400054
 MonoBehaviour:
@@ -5392,7 +5374,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400052}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 0
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400056
 MonoBehaviour:
@@ -5411,7 +5393,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 0}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 3
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400058
 MonoBehaviour:
@@ -5430,7 +5412,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400056}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 1
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400060
 MonoBehaviour:
@@ -5449,7 +5431,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400058}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 3
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400062
 MonoBehaviour:
@@ -5468,7 +5450,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400060}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 1
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400066
 MonoBehaviour:
@@ -5487,7 +5469,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 0}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 1
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400068
 MonoBehaviour:
@@ -5506,7 +5488,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400066}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 3
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400070
 MonoBehaviour:
@@ -5525,7 +5507,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400068}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 1
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400072
 MonoBehaviour:
@@ -5544,7 +5526,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400070}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 3
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400074
 MonoBehaviour:
@@ -5563,7 +5545,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 0}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 0
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400076
 MonoBehaviour:
@@ -5582,7 +5564,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400074}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 2
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400078
 MonoBehaviour:
@@ -5601,7 +5583,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400076}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 0
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400080
 MonoBehaviour:
@@ -5620,7 +5602,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400078}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 2
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400092
 MonoBehaviour:
@@ -5639,7 +5621,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 0}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 3
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400094
 MonoBehaviour:
@@ -5658,7 +5640,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400092}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 1
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400096
 MonoBehaviour:
@@ -5677,7 +5659,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400094}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 3
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400098
 MonoBehaviour:
@@ -5696,7 +5678,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400096}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 1
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400100
 MonoBehaviour:
@@ -5715,7 +5697,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400098}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 3
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400102
 MonoBehaviour:
@@ -5734,7 +5716,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400100}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 1
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400104
 MonoBehaviour:
@@ -5753,7 +5735,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400102}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 3
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400106
 MonoBehaviour:
@@ -5772,7 +5754,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400104}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 1
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400108
 MonoBehaviour:
@@ -5791,7 +5773,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400106}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 3
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400110
 MonoBehaviour:
@@ -5810,7 +5792,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 0}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 0
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400112
 MonoBehaviour:
@@ -5829,7 +5811,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400110}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 2
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400114
 MonoBehaviour:
@@ -5848,7 +5830,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400112}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 0
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400116
 MonoBehaviour:
@@ -5867,7 +5849,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400114}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 2
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400118
 MonoBehaviour:
@@ -5886,7 +5868,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400116}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 0
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400120
 MonoBehaviour:
@@ -5905,7 +5887,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400118}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 2
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400122
 MonoBehaviour:
@@ -5924,7 +5906,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400120}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 0
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400124
 MonoBehaviour:
@@ -5943,7 +5925,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400122}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 2
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400126
 MonoBehaviour:
@@ -5962,7 +5944,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400124}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 0
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400128
 MonoBehaviour:
@@ -5981,7 +5963,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 0}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 3
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400130
 MonoBehaviour:
@@ -6000,7 +5982,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400128}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 1
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400132
 MonoBehaviour:
@@ -6019,7 +6001,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400130}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 3
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400134
 MonoBehaviour:
@@ -6038,7 +6020,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400132}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 1
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400136
 MonoBehaviour:
@@ -6057,7 +6039,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400134}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 3
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400138
 MonoBehaviour:
@@ -6076,7 +6058,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400136}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 1
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400140
 MonoBehaviour:
@@ -6095,7 +6077,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400138}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 3
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400142
 MonoBehaviour:
@@ -6114,7 +6096,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400140}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 1
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400144
 MonoBehaviour:
@@ -6133,7 +6115,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400142}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 3
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400146
 MonoBehaviour:
@@ -6152,7 +6134,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 0}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 0
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400148
 MonoBehaviour:
@@ -6171,7 +6153,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400146}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 2
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400150
 MonoBehaviour:
@@ -6190,7 +6172,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400148}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 0
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400152
 MonoBehaviour:
@@ -6209,7 +6191,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400150}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 2
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400154
 MonoBehaviour:
@@ -6228,7 +6210,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400152}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 0
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400156
 MonoBehaviour:
@@ -6247,7 +6229,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400154}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 2
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400158
 MonoBehaviour:
@@ -6266,7 +6248,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400156}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 0
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400160
 MonoBehaviour:
@@ -6285,7 +6267,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400158}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 2
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400162
 MonoBehaviour:
@@ -6304,7 +6286,7 @@ MonoBehaviour:
   m_RightSlot: {fileID: 11400160}
   m_DebugDisplayNeigbor: 0
   m_Gem: {fileID: 0}
-  m_IndexStartDropTable: 0
+  m_IndexStartDropTable: -1
   m_IndexRandomDropTable: -1
 --- !u!114 &11400164
 MonoBehaviour:
