@@ -17,6 +17,14 @@ public class Gem : MonoBehaviour {
 	void Start () {
 		myTransform = transform;
 	}
+
+	public void InitAtGemSlot (GemSlot a_GemSlot)
+	{
+		if(m_GemSlot == null)
+		{
+			m_GemSlot = a_GemSlot;
+		}
+	}
 	
 	// Update is called once per frame
 	void Update ()

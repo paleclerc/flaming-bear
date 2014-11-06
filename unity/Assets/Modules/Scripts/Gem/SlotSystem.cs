@@ -65,23 +65,13 @@ public class SlotSystem : MonoBehaviour
 	[ContextMenu("CreateAll")]
 	void CreateAll()
 	{
-		StartCoroutine("CreateAllCoroutine");
-	}
-
-	IEnumerator CreateAllCoroutine()
-	{
 		myTransform = transform;
-
+		
 		CreateAllGemSlot();
 		LinkGemSlotBetweenThem();
 		CreateGemDropper();
-		while(GameController.Instance.GetFlowController == null || !GameController.Instance.GetFlowController.GetIsCanSwap())
-		{
-			yield return 0;
-		}
-		SetRealSpeed();
 	}
-
+	
 	void CreateGemDropper ()
 	{
 		m_ListGemDropper = new List<GemDropper>();
@@ -103,28 +93,8 @@ public class SlotSystem : MonoBehaviour
 			GemDropper gemDropper = gemDropperGO.GetComponent<GemDropper>();
 			gemDropper.AddGemSlot(m_ListGameSlot[(m_SizeY-1)][k]);
 			gemDropper.m_GemContainer = m_GemContainer;
-			gemDropper.m_DropSpeed = 1000;
-			gemDropper.m_DropCooldown = 0;
 
 			m_ListGemDropper.Add(gemDropper);
-		}
-	}
-
-	void SetRealSpeed ()
-	{
-		foreach (GemDropper gemDropper in m_ListGemDropper)
-		{
-			gemDropper.m_DropSpeed = m_DroppingSpeed;
-			gemDropper.m_DropCooldown = m_DropCooldown;
-		}
-
-		for (int i = 0; i < m_SizeY; i++) 
-		{
-			for (int k = 0; k < m_SizeX; k++) 
-			{
-				GemSlot currentGemSlot = m_ListGameSlot[i][k];
-				currentGemSlot.m_Gem.m_DroppingSpeed = m_DroppingSpeed;
-			}
 		}
 	}
 

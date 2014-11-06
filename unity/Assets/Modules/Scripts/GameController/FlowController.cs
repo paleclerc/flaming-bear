@@ -4,20 +4,18 @@ using System.Collections.Generic;
 
 public class FlowController : MonoBehaviour	
 {
-	public List<GemSlot> m_GemSlot;
-	public int m_TargetScore;
-	public int m_RemainingMove;
-	private bool m_IsPaused;
-
+	public LevelInformation m_LevelInformationDebug;
 	public bool IsPaused {get {return m_IsPaused;}}
 
 	private bool m_IsNeedToValidate;
 	private GemSwappingData m_GemSwapData = null;
-
+	private bool m_IsPaused;
 	private int m_Score;
 	private bool m_IsInit;
 	private bool m_IsGameFinish;
 	private bool m_ResultScreenDisplayed;
+	private LevelInstance m_LevelInstance;
+	private int m_RemainingMove;
 
 	// Use this for initialization
 	void Start ()
@@ -27,6 +25,9 @@ public class FlowController : MonoBehaviour
 		m_IsGameFinish = false;
 		m_ResultScreenDisplayed = false;
 		m_IsPaused = false;
+		m_RemainingMove = m_LevelInformationDebug.m_TargetMove;
+
+		CreateLevel();
 	}
 
 	void InitCompleted ()
@@ -69,7 +70,7 @@ public class FlowController : MonoBehaviour
 	{
 		if(m_IsNeedToValidate)
 		{
-			foreach (GemSlot gemSlot in m_GemSlot)
+			foreach (GemSlot gemSlot in m_LevelInstance.m_ListGemSlot)
 			{
 				if(gemSlot.IsGemMoving())
 				{
@@ -86,7 +87,7 @@ public class FlowController : MonoBehaviour
 		else if(m_IsGameFinish && !m_ResultScreenDisplayed)
 		{
 			m_ResultScreenDisplayed = true;
-			GameController.Instance.GetGameUIFlowController.DisplayResultScreen((m_TargetScore<m_Score), m_Score, m_TargetScore);
+			GameController.Instance.GetGameUIFlowController.DisplayResultScreen((m_LevelInformationDebug.m_TargetScore<m_Score), m_Score, m_LevelInformationDebug.m_TargetScore);
 		}
 	}
 
@@ -100,7 +101,7 @@ public class FlowController : MonoBehaviour
 		m_IsNeedToValidate = true;
 	}
 
-	public void RegisterGemSlot(GemSlot a_GemSlot)
+	/*public void RegisterGemSlot(GemSlot a_GemSlot)
 	{
 		if(m_GemSlot == null)
 		{
@@ -113,7 +114,7 @@ public class FlowController : MonoBehaviour
 		}
 
 		m_IsNeedToValidate = true;
-	}
+	}*/
 
 	public void SwapGem(Gem a_FirstGem, Gem a_SecondGem)
 	{
@@ -134,17 +135,17 @@ public class FlowController : MonoBehaviour
 		m_GemSwapData.m_FirstGemSwap.ExchangeSlot(m_GemSwapData.m_SecondGemSwap);
 	}
 
-	public void UnregisterGemSlot(GemSlot a_GemSlot)
+	/*public void UnregisterGemSlot(GemSlot a_GemSlot)
 	{
 		if(m_GemSlot.Contains(a_GemSlot))
 		{
 			m_GemSlot.Remove(a_GemSlot);
 		}
-	}
+	}*/
 
 	public void ResetValidation ()
 	{
-		foreach (GemSlot gemSlot in m_GemSlot)
+		foreach (GemSlot gemSlot in m_LevelInstance.m_ListGemSlot)
 		{
 			gemSlot.ResetValidation();
 		}
@@ -155,7 +156,7 @@ public class FlowController : MonoBehaviour
 		ResetValidation();
 
 		List<List<GemSlot>> allResult = new List<List<GemSlot>>();
-		foreach (GemSlot gemSlot in m_GemSlot)
+		foreach (GemSlot gemSlot in m_LevelInstance.m_ListGemSlot)
 		{
 			List<GemSlot> listSameGemHorizontal = new List<GemSlot>();
 			gemSlot.ValidateHorizontal(listSameGemHorizontal);
@@ -245,6 +246,15 @@ public class FlowController : MonoBehaviour
 			m_Score += score;
 			GameController.Instance.GetGameUIFlowController.UpdateScore(m_Score);
 		}
+	}
+
+	void CreateLevel ()
+	{
+		GameObject go = (GameObject)Instantiate(m_LevelInformationDebug.m_LevelPrefab);
+		m_LevelInstance = go.GetComponent<LevelInstance>();
+
+		m_LevelInstance.Init();
+		m_LevelInstance.CreateGems();
 	}
 }
 

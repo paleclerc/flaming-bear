@@ -11,20 +11,20 @@ public class GemSlot : MonoBehaviour {
 
 	public bool m_DebugDisplayNeigbor = false;
 
-
 	public Gem m_Gem;
+	public int m_IndexStartDropTable = -1;
+	public int m_IndexShuffleDropTable = -1;
 
 	private bool m_IsCheckHorizontal;
 	private bool m_IsCheckVertical;
-	// Use this for initialization
-	void Start ()
+
+	public void Init()
 	{
-		GameController.Instance.GetFlowController.RegisterGemSlot(this);
+
 	}
 
 	public void Dispose ()
 	{
-		GameController.Instance.GetFlowController.UnregisterGemSlot(this);
 		m_UpSlot = null;
 		m_DownSlot = null;
 		m_LeftSlot = null;
@@ -216,4 +216,172 @@ public class GemSlot : MonoBehaviour {
 			}
 		}
 	}
+
+	#region Validate Unique at Start
+	internal void GetGemUntilDiffUp(List<GemSlot> a_ListGemSlot, Gem a_Gem = null)
+	{
+		Gem compareGem = a_Gem;
+		if(m_Gem == null)
+		{
+			return;
+		}
+		if(compareGem == null)
+		{
+			compareGem = m_Gem;
+		}
+		if(m_Gem.m_GemInfo.m_GemType == compareGem.m_GemInfo.m_GemType)
+		{
+			if(m_UpSlot != null)
+			{
+				m_UpSlot.GetGemUntilDiffUp(a_ListGemSlot, m_Gem);
+			}
+			a_ListGemSlot.Add(this);
+		}
+	}
+	internal void GetGemUntilDiffDown(List<GemSlot> a_ListGemSlot, Gem a_Gem = null)
+	{
+		Gem compareGem = a_Gem;
+		if(m_Gem == null)
+		{
+			return;
+		}
+		if(compareGem == null)
+		{
+			compareGem = m_Gem;
+		}
+		if(m_Gem.m_GemInfo.m_GemType == compareGem.m_GemInfo.m_GemType)
+		{
+			if(m_DownSlot != null)
+			{
+				m_DownSlot.GetGemUntilDiffDown(a_ListGemSlot, m_Gem);
+			}
+			a_ListGemSlot.Add(this);
+		}
+	}
+
+	internal void GetGemUntilDiffLeft(List<GemSlot> a_ListGemSlot, Gem a_Gem = null)
+	{
+		Gem compareGem = a_Gem;
+		if(m_Gem == null)
+		{
+			return;
+		}
+		if(compareGem == null)
+		{
+			compareGem = m_Gem;
+		}
+		if(m_Gem.m_GemInfo.m_GemType == compareGem.m_GemInfo.m_GemType)
+		{
+			if(m_LeftSlot != null)
+			{
+				m_LeftSlot.GetGemUntilDiffLeft(a_ListGemSlot, m_Gem);
+			}
+			a_ListGemSlot.Add(this);
+		}
+	}
+
+	internal void GetGemUntilDiffRight(List<GemSlot> a_ListGemSlot, Gem a_Gem = null)
+	{
+		Gem compareGem = a_Gem;
+		if(m_Gem == null)
+		{
+			return;
+		}
+		if(compareGem == null)
+		{
+			compareGem = m_Gem;
+		}
+		if(m_Gem.m_GemInfo.m_GemType == compareGem.m_GemInfo.m_GemType)
+		{
+			if(m_RightSlot != null)
+			{
+				m_RightSlot.GetGemUntilDiffRight(a_ListGemSlot, m_Gem);
+			}
+			a_ListGemSlot.Add(this);
+		}
+	}
+
+	private List<GemEnum> FindGemToNotUse()
+	{
+		List<GemEnum> mustIgnoreGem = new List<GemEnum>();
+		List<GemSlot> upList = new List<GemSlot>();
+		if(m_UpSlot != null)
+		{
+			m_UpSlot.GetGemUntilDiffUp(upList);
+		}
+
+		List<GemSlot> downList = new List<GemSlot>();
+		if(m_DownSlot != null)
+		{
+			m_DownSlot.GetGemUntilDiffDown(downList);
+		}
+
+		List<GemSlot> leftList = new List<GemSlot>();
+		if(m_LeftSlot != null)
+		{
+			m_LeftSlot.GetGemUntilDiffLeft(leftList);
+		}
+		
+		List<GemSlot> rightList = new List<GemSlot>();
+		if(m_RightSlot != null)
+		{
+			m_RightSlot.GetGemUntilDiffRight(rightList);
+		}
+
+		bool toCheckCombined = true;
+		if(upList.Count >= 2)
+		{
+			mustIgnoreGem.Add(upList[0].m_Gem.m_GemInfo.m_GemType);
+			toCheckCombined = false;
+		}
+
+		if(downList.Count >= 2)
+		{
+			mustIgnoreGem.Add(downList[0].m_Gem.m_GemInfo.m_GemType);
+			toCheckCombined = false;
+		}
+
+		if(toCheckCombined && (downList.Count + upList.Count) >= 2)
+		{
+			if(downList[0].m_Gem.m_GemInfo.m_GemType == upList[0].m_Gem.m_GemInfo.m_GemType)
+			{
+				mustIgnoreGem.Add(downList[0].m_Gem.m_GemInfo.m_GemType);
+			}
+		}
+
+		toCheckCombined = true;
+		if(leftList.Count >= 2)
+		{
+			mustIgnoreGem.Add(leftList[0].m_Gem.m_GemInfo.m_GemType);
+			toCheckCombined = false;
+		}
+		
+		if(rightList.Count >= 2)
+		{
+			mustIgnoreGem.Add(rightList[0].m_Gem.m_GemInfo.m_GemType);
+			toCheckCombined = false;
+		}
+		
+		if(toCheckCombined && (leftList.Count + rightList.Count) >= 2)
+		{
+			if(leftList[0].m_Gem.m_GemInfo.m_GemType == rightList[0].m_Gem.m_GemInfo.m_GemType)
+			{
+				mustIgnoreGem.Add(leftList[0].m_Gem.m_GemInfo.m_GemType);
+			}
+		}
+
+		return mustIgnoreGem;
+	}
+
+	#endregion
+
+	public void CreateStartGem (bool a_ForceValidation)
+	{
+		List<GemEnum> mustIgnoreGem = FindGemToNotUse();
+
+		Gem gem = GemUtil.CreateGemAtPosition(m_IndexStartDropTable, transform.position, mustIgnoreGem);
+		gem.InitAtGemSlot(this);
+		m_Gem = gem;
+	}
 }
+

@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d34543453a46c8e4a81636a0ef81cc68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_DroppingSpeed: 1
+  m_DroppingSpeed: .200000003
   m_GemInfo:
     m_GemType: 2
 --- !u!114 &11400002
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b40a59a83b9c89c4680b7b2636d90b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MoveSpeed: 1
+  m_MoveSpeed: .200000003
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
