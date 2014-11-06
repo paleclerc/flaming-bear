@@ -5444,10 +5444,6 @@ MonoBehaviour:
         m_DropChanceWeight: 50
       - m_GemType: 1
         m_DropChanceWeight: 50
-      - m_GemType: 2
-        m_DropChanceWeight: 50
-      - m_GemType: 3
-        m_DropChanceWeight: 50
     m_OtherDropTable:
     - m_DisplayName: A
       m_DropTable:

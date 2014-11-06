@@ -39,7 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab3708b3ad5d73d4eadefe43da810caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ResultScreenWinUIControllerPrefab: {fileID: 100002, guid: d71c627ef1f350d48af599c68e324d7f,
+  m_ResultScreenWinUIControllerPrefab: {fileID: 100020, guid: d71c627ef1f350d48af599c68e324d7f,
     type: 2}
   m_ResultScreenLoseUIControllerPrefab: {fileID: 100012, guid: ddcb2e943cb1a0747ba8330c3dd744e8,
     type: 2}

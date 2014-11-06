@@ -1,17 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEditor;
 using System;
 using System.Collections.Generic;
 
 public class GemConfig : ScriptableObject 
 {
-	[MenuItem ("CustomMenu/Config/Create Gem Config")]
-	static void CreateConfig () 
-	{
-		MenuUtil.CreateAsset<GemConfig>();
-	}
-
 	public List<GemConfigItem> m_ListGem;
 
 	public GameObject GetGemPrefabByType(GemEnum a_GemType)
