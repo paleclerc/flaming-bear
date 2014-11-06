@@ -65,9 +65,21 @@ public class LevelInstance : MonoBehaviour
 
 	public void RandomizeGem ()
 	{
-		foreach (GemSlot gemSlot in m_ListGemSlot) 
+		bool existMove = false;
+		while(!existMove)
 		{
-			gemSlot.SelectRandomGem();
+			foreach (GemSlot gemSlot in m_ListGemSlot) 
+			{
+				gemSlot.DeleteGem();
+			}
+
+			foreach (GemSlot gemSlot in m_ListGemSlot) 
+			{
+				gemSlot.SelectRandomGem(true);
+			}
+
+			existMove = ExistPossibleMove();
+			Debug.Log("PAL :: RandomizeGem");
 		}
 	}
 }

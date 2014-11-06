@@ -33,7 +33,10 @@ public class FlowController : MonoBehaviour
 	void InitCompleted ()
 	{
 		m_IsInit = true;
-		SceneManager.Instance.SceneLoadingCompleted();
+		if(SceneManager.Instance != null)
+		{
+			SceneManager.Instance.SceneLoadingCompleted();
+		}
 	}
 
 	#region Event Game

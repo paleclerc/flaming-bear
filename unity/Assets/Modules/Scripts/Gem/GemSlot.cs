@@ -429,7 +429,6 @@ public class GemSlot : MonoBehaviour {
 		RIGHT
 	}
 
-
 	public void CreateStartGem (bool a_ForceValidation)
 	{
 		List<GemEnum> mustIgnoreGem = FindGemToNotUse();
@@ -439,10 +438,10 @@ public class GemSlot : MonoBehaviour {
 		m_Gem = gem;
 	}
 
-	public void SelectRandomGem ()
+	public void SelectRandomGem (bool a_ForceValidation)
 	{
-		DeleteGem();
-		Gem gem = GemUtil.CreateGemAtPosition(m_IndexRandomDropTable, transform.position);
+		List<GemEnum> mustIgnoreGem = FindGemToNotUse();
+		Gem gem = GemUtil.CreateGemAtPosition(m_IndexRandomDropTable, transform.position, mustIgnoreGem);
 		gem.InitAtGemSlot(this);
 		m_Gem = gem;
 	}
