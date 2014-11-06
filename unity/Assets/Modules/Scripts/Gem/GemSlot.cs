@@ -13,7 +13,7 @@ public class GemSlot : MonoBehaviour {
 
 	public Gem m_Gem;
 	public int m_IndexStartDropTable = -1;
-	public int m_IndexShuffleDropTable = -1;
+	public int m_IndexRandomDropTable = -1;
 
 	private bool m_IsCheckHorizontal;
 	private bool m_IsCheckVertical;
@@ -301,29 +301,29 @@ public class GemSlot : MonoBehaviour {
 		}
 	}
 
-	private List<GemEnum> FindGemToNotUse()
+	internal List<GemEnum> FindGemToNotUse(DirectionSlot a_IgnoreDirection = DirectionSlot.NONE)
 	{
 		List<GemEnum> mustIgnoreGem = new List<GemEnum>();
 		List<GemSlot> upList = new List<GemSlot>();
-		if(m_UpSlot != null)
+		if(m_UpSlot != null && (a_IgnoreDirection != DirectionSlot.UP))
 		{
 			m_UpSlot.GetGemUntilDiffUp(upList);
 		}
 
 		List<GemSlot> downList = new List<GemSlot>();
-		if(m_DownSlot != null)
+		if(m_DownSlot != null&& (a_IgnoreDirection != DirectionSlot.DOWN))
 		{
 			m_DownSlot.GetGemUntilDiffDown(downList);
 		}
 
 		List<GemSlot> leftList = new List<GemSlot>();
-		if(m_LeftSlot != null)
+		if(m_LeftSlot != null && (a_IgnoreDirection != DirectionSlot.LEFT))
 		{
 			m_LeftSlot.GetGemUntilDiffLeft(leftList);
 		}
 		
 		List<GemSlot> rightList = new List<GemSlot>();
-		if(m_RightSlot != null)
+		if(m_RightSlot != null && (a_IgnoreDirection != DirectionSlot.RIGHT))
 		{
 			m_RightSlot.GetGemUntilDiffRight(rightList);
 		}
@@ -374,6 +374,61 @@ public class GemSlot : MonoBehaviour {
 	}
 
 	#endregion
+	
+	
+	public bool ExistPossibleMove ()
+	{
+		List<GemEnum> mustIgnoreGem;
+
+		if(m_UpSlot != null)
+		{
+			mustIgnoreGem = m_UpSlot.FindGemToNotUse(DirectionSlot.DOWN);
+			if(mustIgnoreGem.Contains(m_Gem.m_GemInfo.m_GemType))
+			{
+				return true;
+			}
+		}
+
+		if(m_DownSlot != null)
+		{
+			mustIgnoreGem = m_DownSlot.FindGemToNotUse(DirectionSlot.UP);
+			if(mustIgnoreGem.Contains(m_Gem.m_GemInfo.m_GemType))
+			{
+				return true;
+			}
+		}
+
+		if(m_LeftSlot != null)
+		{
+			mustIgnoreGem = m_LeftSlot.FindGemToNotUse(DirectionSlot.RIGHT);
+			if(mustIgnoreGem.Contains(m_Gem.m_GemInfo.m_GemType))
+			{
+				return true;
+			}
+		}
+
+		if(m_RightSlot != null)
+		{
+			mustIgnoreGem = m_RightSlot.FindGemToNotUse(DirectionSlot.LEFT);
+			if(mustIgnoreGem.Contains(m_Gem.m_GemInfo.m_GemType))
+			{
+				return true;
+			}
+		}
+
+
+		return false;
+	}
+
+	internal enum DirectionSlot
+	{
+		NONE,
+		UP,
+		DOWN,
+		LEFT,
+		RIGHT
+	}
+
 
 	public void CreateStartGem (bool a_ForceValidation)
 	{
@@ -383,5 +438,14 @@ public class GemSlot : MonoBehaviour {
 		gem.InitAtGemSlot(this);
 		m_Gem = gem;
 	}
+
+	public void SelectRandomGem ()
+	{
+		DeleteGem();
+		Gem gem = GemUtil.CreateGemAtPosition(m_IndexRandomDropTable, transform.position);
+		gem.InitAtGemSlot(this);
+		m_Gem = gem;
+	}
+
 }
 

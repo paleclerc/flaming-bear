@@ -42,7 +42,7 @@ MonoBehaviour:
   m_LevelInformationDebug:
     m_TargetScore: 10000
     m_TargetMove: 5
-    m_LevelPrefab: {fileID: 100002, guid: b1520834a3dab52469bdc3937eae13df, type: 2}
+    m_LevelPrefab: {fileID: 100002, guid: ddd250cb29f6863408d5932b2f10e74c, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

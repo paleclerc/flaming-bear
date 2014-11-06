@@ -24,7 +24,7 @@ public class LevelInstance : MonoBehaviour
 		}
 	}
 
-	public void CreateGems ()
+	public bool CreateGems ()
 	{
 		foreach (GemSlot gemSlot in m_ListGemSlot) 
 		{
@@ -34,6 +34,40 @@ public class LevelInstance : MonoBehaviour
 		foreach (GemDropper gemDropper in m_ListGemDropper)
 		{
 			gemDropper.m_CanDrop = true;
+		}
+
+		bool canMove = ExistPossibleMove();
+		if(!canMove)
+		{
+			RandomizeGem();
+			return true;
+		}
+		return false;
+	}
+
+	public bool ExistPossibleMove ()
+	{
+//		float before = Time.realtimeSinceStartup;
+		bool canMove = false;
+		foreach (GemSlot gemSlot in m_ListGemSlot) 
+		{
+			canMove = gemSlot.ExistPossibleMove();
+			if(canMove)
+			{
+
+//				Debug.Log("PAL :: CAN MOVE :: "+canMove +" "+ ((Time.realtimeSinceStartup-before)*1000));
+				return canMove;
+			}
+		}
+//		Debug.Log("PAL :: CAN MOVE :: "+canMove +" "+ ((Time.realtimeSinceStartup-before)*1000));
+		return canMove;
+	}
+
+	public void RandomizeGem ()
+	{
+		foreach (GemSlot gemSlot in m_ListGemSlot) 
+		{
+			gemSlot.SelectRandomGem();
 		}
 	}
 }

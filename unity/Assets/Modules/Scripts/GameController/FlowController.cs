@@ -193,6 +193,15 @@ public class FlowController : MonoBehaviour
 		if(!gemDeleted)
 		{
 			m_IsNeedToValidate = false;
+			if(m_GemSwapData == null)
+			{
+				bool checkExistMove = m_LevelInstance.ExistPossibleMove();
+				if(!checkExistMove)
+				{
+					m_LevelInstance.RandomizeGem();
+					m_IsNeedToValidate = true;
+				}
+			}
 		}
 
 		AddScore(allResult);
@@ -254,7 +263,7 @@ public class FlowController : MonoBehaviour
 		m_LevelInstance = go.GetComponent<LevelInstance>();
 
 		m_LevelInstance.Init();
-		m_LevelInstance.CreateGems();
+		m_IsNeedToValidate = m_LevelInstance.CreateGems();
 	}
 }
 
