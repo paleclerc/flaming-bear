@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Modules/Scenes/Launcher.unity
-  - enabled: 1
     path: Assets/Modules/Scenes/GameTest.unity
+  - enabled: 1
+    path: Assets/Modules/Scenes/Launcher.unity
   - enabled: 1
     path: Assets/Modules/Scenes/EmptyScene.unity
