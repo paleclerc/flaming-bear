@@ -3,8 +3,15 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 
+	public int m_TargetFrameRate = 60;
 	public GameObject m_SceneManagerPrefab;
+	public GameObject m_DebugManagerPrefab;
 	static bool m_AlreadyExist = false;
+
+	void Awake()
+	{
+		Application.targetFrameRate = m_TargetFrameRate;
+	}
 	// Use this for initialization
 	void Start () 
 	{
@@ -13,6 +20,7 @@ public class GameManager : MonoBehaviour {
 			m_AlreadyExist = true;
 			DontDestroyOnLoad(gameObject);
 			CreateManager<SceneManager>(m_SceneManagerPrefab);
+			CreateManager<DebugManager>(m_DebugManagerPrefab);
 		}
 		else
 		{
