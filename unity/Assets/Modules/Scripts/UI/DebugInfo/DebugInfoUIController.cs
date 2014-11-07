@@ -10,10 +10,10 @@ public class DebugInfoUIController : MonoBehaviour
 	private DebugInfoUIModel m_Model;
 	private float m_TimeBefore = 0;
 
-	public void Init(string a_Version)
+	public void Init()
 	{
 		m_Model = new DebugInfoUIModel();
-		m_Model.m_VersionNumber = a_Version;
+		m_Model.m_VersionNumber = GlobalConst.VERSION_NUMBER;
 		m_Model.m_CurrentFPS = GetFps();
 
 		UpdateView();

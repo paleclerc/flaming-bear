@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: .247058824}
+  m_Color: {r: 1, g: 1, b: 1, a: .588235319}
   m_FontData:
     m_Font: {fileID: 12800000, guid: e5f435fd4bdacb14c805e4b3bf693395, type: 3}
     m_FontSize: 20
@@ -177,7 +177,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1000
 --- !u!224 &22400000
 RectTransform:
   m_ObjectHideFlags: 1

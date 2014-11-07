@@ -22,7 +22,7 @@ public class DebugManager : MonoBehaviour
 		go.transform.parent = this.transform;
 
 		DebugInfoUIController controller = go.GetComponent<DebugInfoUIController>();
-		controller.Init(m_VersionNumber);
+		controller.Init();
 	}
 
 }

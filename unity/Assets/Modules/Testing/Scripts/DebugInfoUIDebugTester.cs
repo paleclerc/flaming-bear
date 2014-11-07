@@ -8,7 +8,7 @@ public class DebugInfoUIDebugTester : MonoBehaviour
 
 	void Start()
 	{
-		m_Controller.Init(m_VersionNumber);
+		m_Controller.Init();
 	}
 
 	void OnGUI() 
