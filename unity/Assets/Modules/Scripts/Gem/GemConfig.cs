@@ -21,6 +21,11 @@ public class GemConfig : ScriptableObject
 
 }
 
+public class GemConfigSO : AccessorsSO<GemConfig>
+{
+	static public GemConfig Instance{get{return GetInternalInstance(ResourcesPathUtil.GEM_CONFIG);}}
+}
+
 [Serializable]
 public class GemConfigItem
 {

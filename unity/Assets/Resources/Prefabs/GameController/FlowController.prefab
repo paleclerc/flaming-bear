@@ -39,10 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41819df3f5908e042bdc1ee991f66544, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LevelInformationDebug:
-    m_TargetScore: 10000
-    m_TargetMove: 5
-    m_LevelPrefab: {fileID: 100002, guid: b1520834a3dab52469bdc3937eae13df, type: 2}
+  m_LevelId: Debug1
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

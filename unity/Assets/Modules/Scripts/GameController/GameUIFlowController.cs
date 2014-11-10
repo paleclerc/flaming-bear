@@ -47,11 +47,11 @@ public class GameUIFlowController : MonoBehaviour
 	#endregion
 
 	#region Result Screen
-	public void DisplayResultScreen(bool a_IsWin, int a_Score, int a_TargetScore)
+	public void DisplayResultScreen(MissionProgression a_Progression,  Mission a_Mission)
 	{
 		GameObject go = null;
 
-		if(a_IsWin)
+		if(a_Mission.CheckMissionCompleted(a_Progression))
 		{
 			go = CreateScreen(m_ResultScreenWinUIControllerPrefab);
 		}
@@ -67,7 +67,7 @@ public class GameUIFlowController : MonoBehaviour
 
 		controller.OnReplayEvent += GameController.Instance.GetFlowController.ReplayLevel;
 
-		controller.Init(a_Score, a_TargetScore);
+		controller.Init(a_Progression.m_Score, a_Mission.GetScoreToWin());
 	}
 	#endregion
 

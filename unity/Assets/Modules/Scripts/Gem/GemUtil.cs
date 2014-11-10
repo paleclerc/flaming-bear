@@ -5,15 +5,11 @@ public class GemUtil
 {
 	static private LevelGemDropTable m_LevelDropTable;
 	static private GameObject m_GemContainer;
-	static private GemConfig m_GemConfig;
+
 	static public void InitGemUtil(LevelGemDropTable a_LevelDropTable, GameObject a_GemContainer)
 	{
 		m_LevelDropTable = a_LevelDropTable;
 		m_GemContainer = a_GemContainer;
-		if(m_GemConfig == null)
-		{
-			m_GemConfig = Resources.Load<GemConfig>(ResourcesPathUtil.GEM_CONFIG);
-		}
 	}
 
 	static public GameObject FindGemToCreate (int a_DropTableIndex, List<GemEnum> a_MustIgnoreGem = null)
@@ -58,12 +54,12 @@ public class GemUtil
 			tempValue += item.m_DropChanceWeight;
 			if(tempValue > random)
 			{
-				return m_GemConfig.GetGemPrefabByType(item.m_GemType);
+				return GemConfigSO.Instance.GetGemPrefabByType(item.m_GemType);
 			}
 		}
 		
 		//if not found, we fallback as we can...
-		return m_GemConfig.GetGemPrefabByType(tempGemDropTable[0].m_GemType);
+		return GemConfigSO.Instance.GetGemPrefabByType(tempGemDropTable[0].m_GemType);
 	}
 
 	public static Gem CreateGemAtPosition (int a_DropTableIndex, Vector3 a_Position, List<GemEnum> a_MustIgnoreGem = null)
