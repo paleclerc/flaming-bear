@@ -31,6 +31,6 @@ public class Launcher : MonoBehaviour
 
 	void OnPlayEvent ()
 	{
-		SceneManager.Instance.ChangeScene(SceneManager.Instance.m_SceneName.Gameplay);
+		SceneManager.Instance.ChangeScene(SceneManager.Instance.m_SceneName.WorldMap);
 	}
 }

@@ -74,6 +74,7 @@ MonoBehaviour:
     EmptyScene: EmptyScene
     MainMenu: Launcher
     Gameplay: GameTest
+    WorldMap: WorldMap
   m_DefaultTransition: {fileID: 100000, guid: e4fb494ef818c9f48bc186daa7e06a40, type: 2}
 --- !u!114 &11400002
 MonoBehaviour:

@@ -62,8 +62,8 @@ public class GameUIFlowController : MonoBehaviour
 
 		ResultScreenUIController controller = go.GetComponent<ResultScreenUIController>();
 
-		controller.OnContinueEvent += GameController.Instance.GetFlowController.LeaveLevel;
-		controller.OnLeaveEvent += GameController.Instance.GetFlowController.LeaveLevel;
+		controller.OnContinueEvent += GameController.Instance.GetFlowController.ReturnWorldMap;
+		controller.OnLeaveEvent += GameController.Instance.GetFlowController.ReturnMainMenu;
 
 		controller.OnReplayEvent += GameController.Instance.GetFlowController.ReplayLevel;
 
@@ -78,7 +78,7 @@ public class GameUIFlowController : MonoBehaviour
 		{
 			GameObject go = CreateScreen(m_OptionMenuUIControllerPrefab);
 			m_OptionMenuUIController = go.GetComponent<OptionMenuUIController>();
-			m_OptionMenuUIController.OnExitEvent += GameController.Instance.GetFlowController.LeaveLevel;
+			m_OptionMenuUIController.OnExitEvent += GameController.Instance.GetFlowController.ReturnWorldMap;
 			m_OptionMenuUIController.OnResumeEvent += GameController.Instance.GetFlowController.ResumeGame;
 			m_OptionMenuUIController.Init();
 		}

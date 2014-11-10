@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class FlowController : MonoBehaviour	
 {
-	public string m_LevelId;
+	public string m_DebugDefaultLevelId;
 	public bool IsPaused {get {return m_IsPaused;}}
 
 	private bool m_IsNeedToValidate;
@@ -27,10 +27,32 @@ public class FlowController : MonoBehaviour
 		m_ResultScreenDisplayed = false;
 		m_IsPaused = false;
 		m_Progression = new MissionProgression();
-		m_LevelItem = LevelConfigSO.Instance.GetLevelById(m_LevelId);
+		GetLevelItem();
+
 		m_RemainingMove = m_LevelItem.m_MaxMove;
 
 		CreateLevel();
+	}
+
+	void GetLevelItem ()
+	{
+		string levelId = string.Empty;
+
+		if(SceneManager.Instance != null)
+		{
+			GameStartParam param = (GameStartParam)SceneManager.Instance.GetParam();
+			if(param != null)
+			{
+				levelId = param.m_LevelId;
+			}
+		}
+
+		if(levelId == string.Empty)
+		{
+			levelId = m_DebugDefaultLevelId;
+		}
+
+		m_LevelItem = LevelConfigSO.Instance.GetLevelById(levelId);
 	}
 
 	void InitCompleted ()
@@ -43,10 +65,16 @@ public class FlowController : MonoBehaviour
 	}
 
 	#region Event Game
-	public void LeaveLevel()
+	public void ReturnMainMenu()
 	{
 		SceneManager.Instance.ChangeScene(SceneManager.Instance.m_SceneName.MainMenu);
 	}
+
+	public void ReturnWorldMap()
+	{
+		SceneManager.Instance.ChangeScene(SceneManager.Instance.m_SceneName.WorldMap);
+	}
+
 
 	public void ReplayLevel()
 	{
