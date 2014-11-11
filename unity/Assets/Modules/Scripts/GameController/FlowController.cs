@@ -5,7 +5,6 @@ using System.Collections.Generic;
 public class FlowController : MonoBehaviour	
 {
 	public string m_DebugDefaultLevelId;
-	public bool IsPaused {get {return m_IsPaused;}}
 
 	private bool m_IsNeedToValidate;
 	private GemSwappingData m_GemSwapData = null;
@@ -14,10 +13,14 @@ public class FlowController : MonoBehaviour
 	private bool m_IsGameFinish;
 	private bool m_ResultScreenDisplayed;
 	private LevelInstance m_LevelInstance;
-
 	private MissionProgression m_Progression;
-	private int m_RemainingMove;
 	private LevelItem m_LevelItem;
+
+	public int RemainingMove {get {return CurrentMission.m_TotalMoveAvailable-m_Progression.m_Move;}}
+	public bool IsPaused {get {return m_IsPaused;}}
+	public MissionProgression MissionProgression {get {return m_Progression;}}
+	public Mission CurrentMission {get {return m_LevelItem.m_Mission;}
+	}
 
 	// Use this for initialization
 	void Start ()
@@ -28,8 +31,6 @@ public class FlowController : MonoBehaviour
 		m_IsPaused = false;
 		m_Progression = new MissionProgression();
 		GetLevelItem();
-
-		m_RemainingMove = m_LevelItem.m_MaxMove;
 
 		CreateLevel();
 	}
@@ -94,11 +95,6 @@ public class FlowController : MonoBehaviour
 	}
 	#endregion
 
-	public int GetRamainingMove ()
-	{
-		return m_RemainingMove;
-	}
-	
 	// Update is called once per frame
 	void Update ()
 	{
@@ -121,7 +117,7 @@ public class FlowController : MonoBehaviour
 		else if(m_IsGameFinish && !m_ResultScreenDisplayed)
 		{
 			m_ResultScreenDisplayed = true;
-			GameController.Instance.GetGameUIFlowController.DisplayResultScreen(m_Progression, m_LevelItem.m_Mission);
+			GameController.Instance.GetGameUIFlowController.DisplayResultScreen(m_Progression, CurrentMission);
 		}
 	}
 
@@ -266,11 +262,12 @@ public class FlowController : MonoBehaviour
 
 	void RemoveMove ()
 	{
-		m_RemainingMove --;
-		GameController.Instance.GetGameUIFlowController.UpdateMove(m_RemainingMove);
+		m_Progression.m_Move ++;
+		GameController.Instance.GetGameUIFlowController.UpdateProgression(m_Progression);
 
-		if(m_RemainingMove <= 0)
+		if(RemainingMove <= 0)
 		{
+			m_Progression.m_Move = CurrentMission.m_TotalMoveAvailable;
 			m_IsGameFinish = true;
 		}
 	}
@@ -287,7 +284,7 @@ public class FlowController : MonoBehaviour
 			}
 
 			m_Progression.m_Score += score;
-			GameController.Instance.GetGameUIFlowController.UpdateScore(m_Progression.m_Score);
+			GameController.Instance.GetGameUIFlowController.UpdateProgression(m_Progression);
 		}
 	}
 

@@ -15,22 +15,22 @@ MonoBehaviour:
   m_ListItem:
   - m_IconSprite: {fileID: 21300000, guid: 12c41fe061affa34192bddba9a3db6f2, type: 3}
     m_LevelId: Debug1
-    m_RelativePositionPercent: {x: .0500000007, y: .75}
+    m_RelativePositionPercent: {x: .100000001, y: .75}
   - m_IconSprite: {fileID: 21300000, guid: 12c41fe061affa34192bddba9a3db6f2, type: 3}
     m_LevelId: Debug2
-    m_RelativePositionPercent: {x: .25, y: .75}
+    m_RelativePositionPercent: {x: .300000012, y: .75}
   - m_IconSprite: {fileID: 21300000, guid: 12c41fe061affa34192bddba9a3db6f2, type: 3}
     m_LevelId: Debug3
-    m_RelativePositionPercent: {x: .449999988, y: .75}
+    m_RelativePositionPercent: {x: .5, y: .75}
   - m_IconSprite: {fileID: 21300000, guid: 12c41fe061affa34192bddba9a3db6f2, type: 3}
     m_LevelId: Debug4
-    m_RelativePositionPercent: {x: .649999976, y: .75}
+    m_RelativePositionPercent: {x: .699999988, y: .75}
   - m_IconSprite: {fileID: 21300000, guid: 12c41fe061affa34192bddba9a3db6f2, type: 3}
     m_LevelId: Debug5
-    m_RelativePositionPercent: {x: .850000024, y: .75}
+    m_RelativePositionPercent: {x: .899999976, y: .75}
   - m_IconSprite: {fileID: 21300000, guid: 12c41fe061affa34192bddba9a3db6f2, type: 3}
     m_LevelId: Debug6
-    m_RelativePositionPercent: {x: .0500000007, y: .5}
+    m_RelativePositionPercent: {x: .100000001, y: .5}
   - m_IconSprite: {fileID: 21300000, guid: 12c41fe061affa34192bddba9a3db6f2, type: 3}
     m_LevelId: Debug7
-    m_RelativePositionPercent: {x: .25, y: .5}
+    m_RelativePositionPercent: {x: .300000012, y: .5}

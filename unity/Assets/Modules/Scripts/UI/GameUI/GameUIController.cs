@@ -13,37 +13,34 @@ public class GameUIController : MonoBehaviour
 		m_View.OnOptionClick += OnOptionClick;
 	}
 
-	public void Init(int a_RemainingMove)
+	public void Init(Mission a_mission, MissionProgression a_MissionProgression)
 	{
 		m_Model = new GameUIModel();
 		m_Model.m_Score = 0;
-		m_Model.m_RemainingMove = a_RemainingMove;
+		m_Model.m_Mission = a_mission;
 
-		UpdateView();
+		UpdateProgression(a_MissionProgression);
 	}
 
 	void UpdateView ()
 	{
 		m_View.UpdateVisual(m_Model);
 	}
-
-	public void UpdateScore(int a_Value)
-	{
-		m_Model.m_Score = a_Value;
-		if(m_Model.m_Score <= 0)
-		{
-			m_Model.m_Score = 0;
-		}
-
-		UpdateView();
-	}
 	
-	public void UpdateMove(int a_Value)
+	public void UpdateProgression(MissionProgression a_MissionProgression)
 	{
-		m_Model.m_RemainingMove = a_Value;
+		m_Model.m_MissionProgression = a_MissionProgression;
+
+		m_Model.m_RemainingMove = m_Model.m_Mission.m_TotalMoveAvailable-a_MissionProgression.m_Move;
 		if(m_Model.m_RemainingMove <= 0)
 		{
 			m_Model.m_RemainingMove = 0;
+		}
+
+		m_Model.m_Score = a_MissionProgression.m_Score;
+		if(m_Model.m_Score <= 0)
+		{
+			m_Model.m_Score = 0;
 		}
 
 		UpdateView();

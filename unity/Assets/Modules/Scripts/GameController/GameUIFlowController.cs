@@ -32,17 +32,12 @@ public class GameUIFlowController : MonoBehaviour
 		m_GameUIController = go.GetComponent<GameUIController>();
 
 		m_GameUIController.OnOptionEvent += GameController.Instance.GetFlowController.PauseGame;
-		m_GameUIController.Init(GameController.Instance.GetFlowController.GetRamainingMove());
+		m_GameUIController.Init(GameController.Instance.GetFlowController.CurrentMission, GameController.Instance.GetFlowController.MissionProgression);
 	}
 
-	public void UpdateScore(int a_Value)
+	public void UpdateProgression(MissionProgression a_Progression)
 	{
-		m_GameUIController.UpdateScore(a_Value);
-	}
-	
-	public void UpdateMove(int a_Value)
-	{
-		m_GameUIController.UpdateMove(a_Value);
+		m_GameUIController.UpdateProgression(a_Progression);
 	}
 	#endregion
 

@@ -18,12 +18,8 @@ public class WorldMapItemTemplateView : MonoBehaviour
 		m_Model = a_Model;
 		m_ButtonImage.sprite = m_Model.m_Image;
 		m_DisplayNameText.text = a_Model.m_LevelName;
-		m_Container.offsetMin = Vector2.zero;
-		m_Container.offsetMax = Vector2.zero;
 
-		Vector2 size = m_Container.anchorMax - m_Container.anchorMin;
-		m_Container.anchorMin = a_Model.m_Position;
-		m_Container.anchorMax = a_Model.m_Position + size;
+		UIUtils.SetPositionCenteredUI(m_Container, a_Model.m_Position);
 	}
 
 	public void OnLaunchButtonClick()

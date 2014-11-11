@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
-
 public class WorldMapItemTemplateController : MonoBehaviour 
 {
 	public Action<string> OnStartLevelEvent = delegate { };

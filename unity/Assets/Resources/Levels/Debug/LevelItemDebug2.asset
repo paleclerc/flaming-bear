@@ -19,4 +19,4 @@ MonoBehaviour:
     - m_MissionType: 1
       m_MissionTypeScore:
         m_MinScore: 11000
-  m_MaxMove: 6
+    m_TotalMoveAvailable: 6

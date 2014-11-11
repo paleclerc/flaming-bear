@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class Mission
 {
 	public List<MissionItem> m_ListMissionItem;
+	public int m_TotalMoveAvailable;
 
 	public bool CheckMissionCompleted(MissionProgression a_MissionProgression)
 	{
@@ -45,6 +46,7 @@ public class Mission
 	}
 }
 
+[Serializable]
 public class MissionProgression
 {
 	public int m_Move;
