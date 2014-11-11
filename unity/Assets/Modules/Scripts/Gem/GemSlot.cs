@@ -33,16 +33,20 @@ public class GemSlot : MonoBehaviour {
 		DeleteGem();
 	}
 
-	public void DeleteGem ()
+	public GemEnum DeleteGem ()
 	{
+		GemEnum gemDestroyed = GemEnum.NONE;
 		if(m_Gem != null)
 		{
+			gemDestroyed = m_Gem.m_GemInfo.m_GemType;
 			m_Gem.Dispose();
 			Destroy(m_Gem.gameObject);
 			m_Gem= null;
 		}
 
 		MakeTopGemDrop();
+
+		return gemDestroyed;
 	}
 
 	public void DebugGem(Color color)

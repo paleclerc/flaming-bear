@@ -216,7 +216,9 @@ public class FlowController : MonoBehaviour
 			foreach (GemSlot gemSlot in listGemSlot)
 			{
 				gemDeleted = true;
-				gemSlot.DeleteGem();
+				GemEnum gemDestroyed = gemSlot.DeleteGem();
+				AddGemDestroyCount(gemDestroyed);
+
 			}
 		}
 
@@ -256,6 +258,22 @@ public class FlowController : MonoBehaviour
 			{
 				m_GemSwapData = null;
 				RemoveMove();
+			}
+		}
+	}
+
+	void AddGemDestroyCount (GemEnum a_GemDestroyed)
+	{
+		if(a_GemDestroyed != GemEnum.NONE)
+		{
+			if(m_Progression.m_GemDestroy.ContainsKey(a_GemDestroyed))
+			{
+				m_Progression.m_GemDestroy[a_GemDestroyed] ++;
+			}
+			else
+			{
+				
+				m_Progression.m_GemDestroy.Add(a_GemDestroyed, 1);
 			}
 		}
 	}

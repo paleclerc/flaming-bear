@@ -51,4 +51,10 @@ public class MissionProgression
 {
 	public int m_Move;
 	public int m_Score;
+	public Dictionary<GemEnum, int> m_GemDestroy;
+
+	public MissionProgression()
+	{
+		m_GemDestroy = new Dictionary<GemEnum, int>();
+	}
 }

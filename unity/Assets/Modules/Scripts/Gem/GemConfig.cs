@@ -19,6 +19,18 @@ public class GemConfig : ScriptableObject
 		return null;
 	}
 
+	public Sprite GetGemVisualByType(GemEnum a_GemType)
+	{
+		foreach (GemConfigItem configItem in m_ListGem)
+		{
+			if(configItem.m_GemType == a_GemType)
+			{
+				return configItem.m_GemVisual;
+			}
+		}
+		return null;
+	}
+
 }
 
 public class GemConfigSO : AccessorsSO<GemConfig>
@@ -31,4 +43,5 @@ public class GemConfigItem
 {
 	public GemEnum m_GemType;
 	public GameObject m_GemPrefab;
+	public Sprite m_GemVisual;
 }

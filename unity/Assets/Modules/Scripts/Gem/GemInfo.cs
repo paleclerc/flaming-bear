@@ -8,6 +8,7 @@ public class GemInfo
 
 public enum GemEnum
 {
+	NONE = -1,
 	GemType01 = 0,
 	GemType02 = 1,
 	GemType03 = 2,

@@ -4,50 +4,40 @@ using System;
 
 public class MissionTypeScoreUIController : MissionTypeBaseUIController
 {
-	public MissionTypeScoreUIView m_View;
-	private MissionTypeScoreUIModel m_Model;
 	private const string TEXT_TO_REPLACE = "{0}\nof\n{1}";
-	
-	public override void Init (MissionTypeBase a_MissionType, MissionProgression a_Progression)
+
+	public MissionTypeScoreUIModel myModel {get {return (MissionTypeScoreUIModel)m_Model;}}
+
+	protected override MissionTypeBaseUIModel CreateModel (MissionTypeBase a_MissionType)
 	{
 		if(!(a_MissionType is MissionTypeScore))
 		{
 			Debug.LogError("ERROR :: Mission Type do not fit, need a mission type : "+typeof(MissionTypeScore));
-			return ;
+			return null;
 		}
 		MissionTypeScore myMissionType = (MissionTypeScore)a_MissionType;
-		m_Model = new MissionTypeScoreUIModel();
-		m_Model.m_TotalScore = myMissionType.m_MinScore;
 
-		UpdateMission(a_Progression);
+		MissionTypeScoreUIModel model = new MissionTypeScoreUIModel();
+		model.m_TotalScore = myMissionType.m_MinScore;
+
+		return model;
 	}
 
 	public override void UpdateMission (MissionProgression a_Progression)
 	{
-		m_Model.m_CurrentScore = a_Progression.m_Score;
+		myModel.m_CurrentScore = a_Progression.m_Score;
 
-		UpdateView();
+		base.UpdateMission(a_Progression);
 	}
 
-	void UpdateView ()
+	override protected bool GetIsCompleted()
 	{
-		DetermineScoreInfo();
-		m_View.UpdateVisual(m_Model);
+		return (myModel.m_CurrentScore >= myModel.m_TotalScore);
 	}
-
-	void DetermineScoreInfo()
-	{
-		m_Model.m_Completed = (m_Model.m_CurrentScore >= m_Model.m_TotalScore);
-
-		m_Model.m_DisplayText = string.Format(TEXT_TO_REPLACE,StringUtil.SeparateThousand(m_Model.m_CurrentScore),StringUtil.SeparateThousand(m_Model.m_TotalScore));
-	}
-
-	//Only here as a testing purpose
-	public void InjectData (MissionTypeScoreUIModel a_Model)
-	{
-		m_Model = a_Model;
-
-		UpdateView();
+	
+	override protected string GetDisplayText()
+	{	
+		return string.Format(TEXT_TO_REPLACE,StringUtil.SeparateThousand(myModel.m_CurrentScore),StringUtil.SeparateThousand(myModel.m_TotalScore));
 	}
 
 }
