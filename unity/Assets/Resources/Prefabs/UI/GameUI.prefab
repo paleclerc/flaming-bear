@@ -685,6 +685,8 @@ MonoBehaviour:
     m_PrefabToCreate: {fileID: 100004, guid: d261e7ebce3e6914a899f9b8d7055c32, type: 2}
   - m_MissionType: 3
     m_PrefabToCreate: {fileID: 100004, guid: 16b416fe2b4e94849bd4572dccf11a01, type: 2}
+  - m_MissionType: 4
+    m_PrefabToCreate: {fileID: 100004, guid: 2609570d7f1345c49b7e54d84bf7475c, type: 2}
   m_ListPositionMission:
   - {fileID: 22400040}
   - {fileID: 22400038}

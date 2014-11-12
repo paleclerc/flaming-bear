@@ -212,7 +212,7 @@ public class FlowController : MonoBehaviour
 		bool gemDeleted = false;
 		foreach (List<GemSlot> listGemSlot in allResult)
 		{
-
+			AddGemLineCount(listGemSlot.Count);
 			foreach (GemSlot gemSlot in listGemSlot)
 			{
 				gemDeleted = true;
@@ -259,6 +259,19 @@ public class FlowController : MonoBehaviour
 				m_GemSwapData = null;
 				RemoveMove();
 			}
+		}
+	}
+
+	void AddGemLineCount (int a_QuantityInLine)
+	{
+		if(m_Progression.m_GemLineDestroy.ContainsKey(a_QuantityInLine))
+		{
+			m_Progression.m_GemLineDestroy[a_QuantityInLine] ++;
+		}
+		else
+		{
+			
+			m_Progression.m_GemLineDestroy.Add(a_QuantityInLine, 1);
 		}
 	}
 

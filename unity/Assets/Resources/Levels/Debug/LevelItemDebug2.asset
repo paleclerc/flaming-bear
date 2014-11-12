@@ -24,6 +24,9 @@ MonoBehaviour:
         m_QuantityToDestroy: 0
       m_MissionTypeGemDestroy:
         m_QuantityToDestroy: 0
+      m_MissionQuantityInLine:
+        m_QuantityInLine: 3
+        m_QuantityToDestroy: 0
     - m_MissionType: 2
       m_MissionTypeScore:
         m_MinScore: 11000
@@ -31,6 +34,9 @@ MonoBehaviour:
         m_TypeGem: 0
         m_QuantityToDestroy: 3
       m_MissionTypeGemDestroy:
+        m_QuantityToDestroy: 0
+      m_MissionQuantityInLine:
+        m_QuantityInLine: 3
         m_QuantityToDestroy: 0
     - m_MissionType: 2
       m_MissionTypeScore:
@@ -40,6 +46,9 @@ MonoBehaviour:
         m_QuantityToDestroy: 4
       m_MissionTypeGemDestroy:
         m_QuantityToDestroy: 0
+      m_MissionQuantityInLine:
+        m_QuantityInLine: 3
+        m_QuantityToDestroy: 0
     - m_MissionType: 2
       m_MissionTypeScore:
         m_MinScore: 11000
@@ -47,6 +56,9 @@ MonoBehaviour:
         m_TypeGem: 2
         m_QuantityToDestroy: 5
       m_MissionTypeGemDestroy:
+        m_QuantityToDestroy: 0
+      m_MissionQuantityInLine:
+        m_QuantityInLine: 3
         m_QuantityToDestroy: 0
     - m_MissionType: 2
       m_MissionTypeScore:
@@ -56,6 +68,9 @@ MonoBehaviour:
         m_QuantityToDestroy: 6
       m_MissionTypeGemDestroy:
         m_QuantityToDestroy: 0
+      m_MissionQuantityInLine:
+        m_QuantityInLine: 3
+        m_QuantityToDestroy: 0
     - m_MissionType: 2
       m_MissionTypeScore:
         m_MinScore: 11000
@@ -64,7 +79,10 @@ MonoBehaviour:
         m_QuantityToDestroy: 7
       m_MissionTypeGemDestroy:
         m_QuantityToDestroy: 0
-    - m_MissionType: 2
+      m_MissionQuantityInLine:
+        m_QuantityInLine: 3
+        m_QuantityToDestroy: 0
+    - m_MissionType: 4
       m_MissionTypeScore:
         m_MinScore: 11000
       m_MissionTypeGemTypeDestroy:
@@ -72,6 +90,9 @@ MonoBehaviour:
         m_QuantityToDestroy: 3
       m_MissionTypeGemDestroy:
         m_QuantityToDestroy: 0
+      m_MissionQuantityInLine:
+        m_QuantityInLine: 4
+        m_QuantityToDestroy: 1
     - m_MissionType: 3
       m_MissionTypeScore:
         m_MinScore: 11000
@@ -80,4 +101,7 @@ MonoBehaviour:
         m_QuantityToDestroy: 3
       m_MissionTypeGemDestroy:
         m_QuantityToDestroy: 50
+      m_MissionQuantityInLine:
+        m_QuantityInLine: 3
+        m_QuantityToDestroy: 0
     m_TotalMoveAvailable: 8

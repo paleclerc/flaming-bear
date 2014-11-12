@@ -7,6 +7,7 @@ public class MissionItem
 	public MissionTypeScore m_MissionTypeScore;
 	public MissionTypeGemTypeDestroy m_MissionTypeGemTypeDestroy;
 	public MissionTypeGemDestroy m_MissionTypeGemDestroy;
+	public MissionTypeGemLineSizeDestroy m_MissionQuantityInLine;
 	
 	public MissionTypeBase GetCurrentMission()
 	{
@@ -23,6 +24,10 @@ public class MissionItem
 		case MissionType.GEM_DESTROYED :
 		{
 			return m_MissionTypeGemDestroy;
+		}
+		case MissionType.QUANTITY_IN_LINE :
+		{
+			return m_MissionQuantityInLine;
 		}
 		}
 
