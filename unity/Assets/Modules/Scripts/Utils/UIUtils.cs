@@ -21,4 +21,13 @@ public static class UIUtils
 		a_TransformToMove.anchorMin = a_TransformReference.anchorMin;
 		a_TransformToMove.anchorMax = a_TransformReference.anchorMax;
 	}
+
+	public static void SetFullSize(RectTransform a_TransformToMove)
+	{
+		a_TransformToMove.offsetMin = Vector2.zero;
+		a_TransformToMove.offsetMax = Vector2.zero;
+		
+		a_TransformToMove.anchorMin = Vector2.zero;
+		a_TransformToMove.anchorMax = Vector2.one;
+	}
 }

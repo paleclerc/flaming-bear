@@ -62,7 +62,7 @@ public class GameUIFlowController : MonoBehaviour
 
 		controller.OnReplayEvent += GameController.Instance.GetFlowController.ReplayLevel;
 
-		controller.Init(a_Progression.m_Score, a_Mission.GetScoreToWin());
+		controller.Init(a_Mission, a_Progression);
 	}
 	#endregion
 

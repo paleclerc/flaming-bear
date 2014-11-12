@@ -95,7 +95,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Gem type to Destroy :'
+  m_Text: 'Gem to Destroy :'
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

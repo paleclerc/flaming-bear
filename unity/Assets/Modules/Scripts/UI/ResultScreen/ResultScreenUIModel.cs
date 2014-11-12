@@ -3,6 +3,6 @@
 [Serializable]
 public class ResultScreenUIModel 
 {
-	public int m_Score;
-	public int m_TargetScore;
+	public Mission m_Mission;
+	public MissionProgression m_Progression;
 }

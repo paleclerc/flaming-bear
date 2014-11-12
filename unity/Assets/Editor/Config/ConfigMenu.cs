@@ -35,5 +35,11 @@ static public class ConfigMenu
 	{
 		MenuUtil.CreateAsset<WorldMapConfig>();
 	}
+
+	[MenuItem ("CustomMenu/Config/Unique/Create Mission Config")]
+	static void CreateMissionConfig () 
+	{
+		MenuUtil.CreateAsset<MissionConfig>();
+	}
 	#endregion
 }

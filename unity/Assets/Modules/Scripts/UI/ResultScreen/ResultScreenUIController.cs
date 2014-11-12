@@ -18,11 +18,11 @@ public class ResultScreenUIController : MonoBehaviour
 		m_View.OnLeaveClick += OnLeaveClick;
 	}
 
-	public void Init(int a_Score, int a_TargetScore)
+	public void Init(Mission a_Mission, MissionProgression a_Progression)
 	{
 		m_Model = new ResultScreenUIModel();
-		m_Model.m_Score = a_Score;
-		m_Model.m_TargetScore = a_TargetScore;
+		m_Model.m_Mission = a_Mission;
+		m_Model.m_Progression = a_Progression;
 
 		UpdateView();
 	}

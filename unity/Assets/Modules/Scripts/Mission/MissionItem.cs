@@ -1,9 +1,11 @@
 ﻿using System;
+using UnityEngine;
 
 [Serializable]
 public class MissionItem
 {
 	public MissionType m_MissionType;
+
 	public MissionTypeScore m_MissionTypeScore;
 	public MissionTypeGemTypeDestroy m_MissionTypeGemTypeDestroy;
 	public MissionTypeGemDestroy m_MissionTypeGemDestroy;
