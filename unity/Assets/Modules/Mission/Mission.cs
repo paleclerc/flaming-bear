@@ -51,6 +51,7 @@ public class MissionProgression
 {
 	public int m_Move;
 	public int m_Score;
+	public int m_TotalGemDestroy;
 	public Dictionary<GemEnum, int> m_GemDestroy;
 
 	public MissionProgression()

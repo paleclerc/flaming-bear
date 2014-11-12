@@ -5,6 +5,7 @@ public class MissionItem
 {
 	public MissionType m_MissionType;
 	public MissionTypeScore m_MissionTypeScore;
+	public MissionTypeGemTypeDestroy m_MissionTypeGemTypeDestroy;
 	public MissionTypeGemDestroy m_MissionTypeGemDestroy;
 	
 	public MissionTypeBase GetCurrentMission()
@@ -14,6 +15,10 @@ public class MissionItem
 		case MissionType.SCORE :
 		{
 			return m_MissionTypeScore;
+		}
+		case MissionType.GEM_TYPE_DESTROYED :
+		{
+			return m_MissionTypeGemTypeDestroy;
 		}
 		case MissionType.GEM_DESTROYED :
 		{

@@ -19,37 +19,65 @@ MonoBehaviour:
     - m_MissionType: 1
       m_MissionTypeScore:
         m_MinScore: 5000
-      m_MissionTypeGemDestroy:
+      m_MissionTypeGemTypeDestroy:
         m_TypeGem: 0
+        m_QuantityToDestroy: 0
+      m_MissionTypeGemDestroy:
         m_QuantityToDestroy: 0
     - m_MissionType: 2
       m_MissionTypeScore:
         m_MinScore: 11000
-      m_MissionTypeGemDestroy:
+      m_MissionTypeGemTypeDestroy:
         m_TypeGem: 0
-        m_QuantityToDestroy: 5
+        m_QuantityToDestroy: 3
+      m_MissionTypeGemDestroy:
+        m_QuantityToDestroy: 0
     - m_MissionType: 2
       m_MissionTypeScore:
         m_MinScore: 11000
-      m_MissionTypeGemDestroy:
+      m_MissionTypeGemTypeDestroy:
         m_TypeGem: 1
-        m_QuantityToDestroy: 6
+        m_QuantityToDestroy: 4
+      m_MissionTypeGemDestroy:
+        m_QuantityToDestroy: 0
     - m_MissionType: 2
       m_MissionTypeScore:
         m_MinScore: 11000
-      m_MissionTypeGemDestroy:
+      m_MissionTypeGemTypeDestroy:
         m_TypeGem: 2
-        m_QuantityToDestroy: 7
+        m_QuantityToDestroy: 5
+      m_MissionTypeGemDestroy:
+        m_QuantityToDestroy: 0
     - m_MissionType: 2
       m_MissionTypeScore:
         m_MinScore: 11000
-      m_MissionTypeGemDestroy:
+      m_MissionTypeGemTypeDestroy:
         m_TypeGem: 3
-        m_QuantityToDestroy: 8
+        m_QuantityToDestroy: 6
+      m_MissionTypeGemDestroy:
+        m_QuantityToDestroy: 0
     - m_MissionType: 2
       m_MissionTypeScore:
         m_MinScore: 11000
-      m_MissionTypeGemDestroy:
+      m_MissionTypeGemTypeDestroy:
         m_TypeGem: 4
-        m_QuantityToDestroy: 9
+        m_QuantityToDestroy: 7
+      m_MissionTypeGemDestroy:
+        m_QuantityToDestroy: 0
+    - m_MissionType: 2
+      m_MissionTypeScore:
+        m_MinScore: 11000
+      m_MissionTypeGemTypeDestroy:
+        m_TypeGem: 5
+        m_QuantityToDestroy: 3
+      m_MissionTypeGemDestroy:
+        m_QuantityToDestroy: 0
+    - m_MissionType: 3
+      m_MissionTypeScore:
+        m_MinScore: 11000
+      m_MissionTypeGemTypeDestroy:
+        m_TypeGem: 5
+        m_QuantityToDestroy: 3
+      m_MissionTypeGemDestroy:
+        m_QuantityToDestroy: 50
     m_TotalMoveAvailable: 8

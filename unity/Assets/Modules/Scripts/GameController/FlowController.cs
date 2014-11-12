@@ -275,6 +275,7 @@ public class FlowController : MonoBehaviour
 				
 				m_Progression.m_GemDestroy.Add(a_GemDestroyed, 1);
 			}
+			m_Progression.m_TotalGemDestroy++;
 		}
 	}
 

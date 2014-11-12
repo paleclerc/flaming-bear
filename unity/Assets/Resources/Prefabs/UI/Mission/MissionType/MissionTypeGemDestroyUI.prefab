@@ -47,7 +47,7 @@ GameObject:
   - 114: {fileID: 11400010}
   - 114: {fileID: 11400008}
   m_Layer: 5
-  m_Name: MissionTypeGemDestroyedUI
+  m_Name: MissionTypeGemDestroyUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Gem to Destory :'
+  m_Text: 'Gem type to Destroy :'
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e719cd1037c3ce24a9d41e3da28269f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 25c076a92a641c64aa6ba7622aad75e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_BackgroundImageToChanceColor: {fileID: 11400004}
@@ -185,6 +185,7 @@ MonoBehaviour:
   m_CompletedImage: {fileID: 21300000, guid: 375aaf4fbdcd61043bb3b408691ba26a, type: 3}
   m_UncompletedColor: {r: 1, g: .742647052, b: .742647052, a: 1}
   m_CompletedColor: {r: .668965518, g: 1, b: .625, a: 1}
+  m_UnCompletedImage: {fileID: 21300000, guid: 12c41fe061affa34192bddba9a3db6f2, type: 3}
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -193,7 +194,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d1ebc18c54ea35469397deb0a1d9ed6, type: 3}
+  m_Script: {fileID: 11500000, guid: a844d22df67ece94e9504cda9ce5f059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_View: {fileID: 11400008}

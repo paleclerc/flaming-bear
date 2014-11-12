@@ -2,22 +2,22 @@
 using System.Collections;
 using System;
 
-public class MissionTypeGemDestroyedUIController : MissionTypeBaseUIController
+public class MissionTypeGemTypeDestroyUIController : MissionTypeBaseUIController
 {
 	private const string TEXT_TO_REPLACE = "{0}\nof\n{1}";
 
-	public MissionTypeGemDestroyedUIModel myModel {get {return (MissionTypeGemDestroyedUIModel)m_Model;}}
+	public MissionTypeGemTypeDestroyUIModel myModel {get {return (MissionTypeGemTypeDestroyUIModel)m_Model;}}
 
 	protected override MissionTypeBaseUIModel CreateModel (MissionTypeBase a_MissionType)
 	{
-		if(!(a_MissionType is MissionTypeGemDestroy))
+		if(!(a_MissionType is MissionTypeGemTypeDestroy))
 		{
-			Debug.LogError("ERROR :: Mission Type do not fit, need a mission type : "+typeof(MissionTypeGemDestroy));
+			Debug.LogError("ERROR :: Mission Type do not fit, need a mission type : "+typeof(MissionTypeGemTypeDestroy));
 			return null;
 		}
-		MissionTypeGemDestroy myMissionType = (MissionTypeGemDestroy)a_MissionType;
+		MissionTypeGemTypeDestroy myMissionType = (MissionTypeGemTypeDestroy)a_MissionType;
 
-		MissionTypeGemDestroyedUIModel model = new MissionTypeGemDestroyedUIModel();
+		MissionTypeGemTypeDestroyUIModel model = new MissionTypeGemTypeDestroyUIModel();
 		
 		model.m_TotalGemQuantity = myMissionType.m_QuantityToDestroy;
 		model.m_GemType = myMissionType.m_TypeGem;
