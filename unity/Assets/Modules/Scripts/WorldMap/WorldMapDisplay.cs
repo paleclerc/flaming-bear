@@ -25,6 +25,6 @@ public class WorldMapDisplay : MonoBehaviour
 	{
 		GameStartParam param = new GameStartParam();
 		param.m_LevelId = a_LevelName;
-		SceneManager.Instance.ChangeScene(SceneManager.Instance.m_SceneName.Gameplay, param);
+		SceneManager.Instance.ChangeScene(SceneInfoConfigSO.Instance.SCENE_NAME.Gameplay, param);
 	}
 }

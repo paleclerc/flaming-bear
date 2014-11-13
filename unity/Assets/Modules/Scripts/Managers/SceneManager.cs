@@ -13,7 +13,17 @@ public class SceneManager : MonoBehaviour
 	}
 	#endregion
 
-	public SceneName m_SceneName;
+	void Start()
+	{
+		StartCoroutine("WaitToExecuteInitTraitement");
+	}
+
+	private IEnumerator WaitToExecuteInitTraitement()
+	{
+		yield return 0;
+		TryPlayMusic(Application.loadedLevelName);
+	}
+
 	public GameObject m_DefaultTransition;
 	private bool m_BetweenScene;
 	private bool m_SceneLoadingCompleted;
@@ -47,7 +57,7 @@ public class SceneManager : MonoBehaviour
 			yield return 0;
 		}
 
-		Application.LoadLevel(m_SceneName.EmptyScene); 
+		Application.LoadLevel(SceneInfoConfigSO.Instance.SCENE_NAME.EmptyScene); 
 
 		yield return 0;
 
@@ -59,6 +69,8 @@ public class SceneManager : MonoBehaviour
 			yield return 0;
 		}
 
+		TryPlayMusic(a_SceneName);
+
 		transition.StartTransitionOut();
 		while(!transition.TransitionOutCompleted)
 		{
@@ -69,17 +81,18 @@ public class SceneManager : MonoBehaviour
 		m_BetweenScene = false;
 	}
 
+	void TryPlayMusic (string a_SceneName)
+	{
+		SceneInfoConfigItem config = SceneInfoConfigSO.Instance.GetSceneInfoByName(a_SceneName);
+		
+		if(config.m_MusicToPlayName != string.Empty)
+		{
+			AudioManager.Instance.PlayAudioItem(config.m_MusicToPlayName);
+		}
+	}
+
 	public void SceneLoadingCompleted()
 	{
 		m_SceneLoadingCompleted = true;
 	}
-}
-
-[Serializable]
-public class SceneName
-{
-	public string EmptyScene;
-	public string MainMenu;
-	public string Gameplay;
-	public string WorldMap;
 }

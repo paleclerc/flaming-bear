@@ -52,5 +52,11 @@ static public class ConfigMenu
 	{
 		MenuUtil.CreateAsset<AudioConfig>();
 	}
+
+	[MenuItem ("CustomMenu/Config/Unique/Create Scene Info Config")]
+	static void CreateSceneInfoConfig () 
+	{
+		MenuUtil.CreateAsset<SceneInfoConfig>();
+	}
 	#endregion
 }

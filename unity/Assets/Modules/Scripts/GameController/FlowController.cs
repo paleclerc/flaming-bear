@@ -68,18 +68,18 @@ public class FlowController : MonoBehaviour
 	#region Event Game
 	public void ReturnMainMenu()
 	{
-		SceneManager.Instance.ChangeScene(SceneManager.Instance.m_SceneName.MainMenu);
+		SceneManager.Instance.ChangeScene(SceneInfoConfigSO.Instance.SCENE_NAME.MainMenu);
 	}
 
 	public void ReturnWorldMap()
 	{
-		SceneManager.Instance.ChangeScene(SceneManager.Instance.m_SceneName.WorldMap);
+		SceneManager.Instance.ChangeScene(SceneInfoConfigSO.Instance.SCENE_NAME.WorldMap);
 	}
 
 
 	public void ReplayLevel()
 	{
-		SceneManager.Instance.ChangeScene(SceneManager.Instance.m_SceneName.Gameplay);
+		SceneManager.Instance.ChangeScene(SceneInfoConfigSO.Instance.SCENE_NAME.Gameplay);
 	}
 
 	public void PauseGame ()
