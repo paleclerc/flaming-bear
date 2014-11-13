@@ -16,6 +16,11 @@ static public class ConfigMenu
 		MenuUtil.CreateAsset<WorldMapSection>();
 	}
 
+	[MenuItem ("CustomMenu/Config/Create Audio Item")]
+	static void CreateAudioItem()
+	{
+		MenuUtil.CreateAsset<AudioItem>();
+	}
 
 	#region Unity Creation
 	[MenuItem ("CustomMenu/Config/Unique/Create Gem Config")]
@@ -40,6 +45,12 @@ static public class ConfigMenu
 	static void CreateMissionConfig () 
 	{
 		MenuUtil.CreateAsset<MissionConfig>();
+	}
+
+	[MenuItem ("CustomMenu/Config/Unique/Create Audio Config")]
+	static void CreateAudioConfig () 
+	{
+		MenuUtil.CreateAsset<AudioConfig>();
 	}
 	#endregion
 }

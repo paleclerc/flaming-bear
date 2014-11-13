@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c4267f2fb48ac948a9a1d20ff3b4422, type: 3}
+  m_Name: AudioConfig
+  m_EditorClassIdentifier: 
+  m_ListAudioConfigItem:
+  - m_UniqueName: MusicLose
+    m_AudioItem: {fileID: 11400000, guid: 5ff95bf2f8f6d054eb56cb6dcfc67d79, type: 2}
+  - m_UniqueName: MusicMainTheme
+    m_AudioItem: {fileID: 11400000, guid: 8c2f83d5de736a445a0104e7c7700ffc, type: 2}
+  - m_UniqueName: MusicTitle
+    m_AudioItem: {fileID: 11400000, guid: f30c4bc193f1edb4f956e6d1c11eb7f0, type: 2}
+  - m_UniqueName: MusicWin
+    m_AudioItem: {fileID: 11400000, guid: 0e38daa3c04c7a54189bafc47759a1d3, type: 2}
+  - m_UniqueName: MusicWorldMap
+    m_AudioItem: {fileID: 11400000, guid: 1b8a35a508cbd4b4db2a3e2699d25314, type: 2}
+  - m_UniqueName: SFXButtonClick
+    m_AudioItem: {fileID: 11400000, guid: d9be372f22d8fe74296bdb712bd1379e, type: 2}
+  - m_UniqueName: SFXClickGem
+    m_AudioItem: {fileID: 11400000, guid: 9e5a1ec173c915946b3f7b2d9240426a, type: 2}
+  - m_UniqueName: SFXGemDestroy
+    m_AudioItem: {fileID: 11400000, guid: e55d85f1df8eb5141b70021b4725c901, type: 2}
+  - m_UniqueName: SFXMissionCompleted
+    m_AudioItem: {fileID: 11400000, guid: c4adcbee37a6b5a4082a16f68b6a0e03, type: 2}
+  - m_UniqueName: SFXSwapGemError
+    m_AudioItem: {fileID: 11400000, guid: 00e11f3161963bf49a24d608bbeed93f, type: 2}

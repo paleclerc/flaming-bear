@@ -169,12 +169,13 @@ MonoBehaviour:
   m_Controller: {fileID: 944183651}
   m_Model:
     m_Completed: 0
+    m_DisplayText: 
     m_CurrentScore: 500
     m_TotalScore: 0
-    m_DisplayText: 
   m_MissionProgression:
     m_Move: 5
     m_Score: 1500
+    m_TotalGemDestroy: 0
   m_MissionTypeScore:
     m_MinScore: 123456
 --- !u!4 &203481243
@@ -358,10 +359,10 @@ MonoBehaviour:
   m_BackgroundImageToChanceColor: {fileID: 944183648}
   m_Icon: {fileID: 11909222}
   m_DisplayText: {fileID: 1091087503}
-  m_UnCompletedImage: {fileID: 21300000, guid: f06055591aa883740b8782e5316f9b5e, type: 3}
   m_CompletedImage: {fileID: 21300000, guid: 375aaf4fbdcd61043bb3b408691ba26a, type: 3}
   m_UncompletedColor: {r: 1, g: .742647052, b: .742647052, a: 1}
   m_CompletedColor: {r: .668965518, g: 1, b: .625, a: 1}
+  m_UnCompletedImage: {fileID: 21300000, guid: f06055591aa883740b8782e5316f9b5e, type: 3}
 --- !u!114 &944183651
 MonoBehaviour:
   m_ObjectHideFlags: 0

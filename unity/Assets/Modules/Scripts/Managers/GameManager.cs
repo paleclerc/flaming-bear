@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour {
 	public int m_TargetFrameRate = 60;
 	public GameObject m_SceneManagerPrefab;
 	public GameObject m_DebugManagerPrefab;
+	public GameObject m_AudioManagerPrefab;
 	static bool m_AlreadyExist = false;
 
 	void Awake()
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour {
 			DontDestroyOnLoad(gameObject);
 			CreateManager<SceneManager>(m_SceneManagerPrefab);
 			CreateManager<DebugManager>(m_DebugManagerPrefab);
+			CreateManager<AudioManager>(m_AudioManagerPrefab);
 		}
 		else
 		{
