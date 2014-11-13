@@ -11,4 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0717bb35b4d3fb4458ca0335e7452b5c, type: 3}
   m_Name: GemDestroy
   m_EditorClassIdentifier: 
-  m_AudioClip: {fileID: 8300000, guid: 505e6d340aa487b4aaa92a81b519c5bd, type: 3}
+  m_AudioClip: {fileID: 8300000, guid: f608bf71129467a48ae6e2bed7427d76, type: 3}
+  m_Type: 0
+  m_DefaultVolume: 1
+  m_Loopable: 0

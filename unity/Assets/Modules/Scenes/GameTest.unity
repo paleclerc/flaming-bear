@@ -351,6 +351,7 @@ MonoBehaviour:
   m_TargetFrameRate: 60
   m_SceneManagerPrefab: {fileID: 100000, guid: d97c5e74c701fa2469c1c98c585af9e5, type: 2}
   m_DebugManagerPrefab: {fileID: 100000, guid: a11ceef29b5d4004397cb4d0c2b3ac36, type: 2}
+  m_AudioManagerPrefab: {fileID: 100000, guid: 3a238dbe0f709f84ea4a78983755ba9e, type: 2}
 --- !u!4 &1991168424
 Transform:
   m_ObjectHideFlags: 0

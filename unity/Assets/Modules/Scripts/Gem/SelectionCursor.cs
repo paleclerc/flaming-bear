@@ -8,6 +8,7 @@ public class SelectionCursor : MonoBehaviour {
 	
 	private Animator m_Animator;
 	private Gem m_SelectedGem = null;
+	public string m_AudioToPlay;
 
 	public void UnSelectAll()
 	{
@@ -17,6 +18,7 @@ public class SelectionCursor : MonoBehaviour {
 
 	public void SelectGem(Gem a_GemToSelect)
 	{
+		AudioManager.Instance.PlayAudioItem(m_AudioToPlay);
 		if(m_SelectedGem == a_GemToSelect)
 		{
 			UnSelectAll();

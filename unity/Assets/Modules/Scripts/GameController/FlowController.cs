@@ -23,6 +23,8 @@ public class FlowController : MonoBehaviour
 	public MissionProgression MissionProgression {get {return m_Progression;}}
 	public Mission CurrentMission {get {return m_LevelItem.m_Mission;}}
 	public string m_AudioMissionCompleted;
+	public string m_AudioSwapError;
+	public string m_AudioGemDestroyed;
 
 	// Use this for initialization
 	void Start ()
@@ -219,7 +221,11 @@ public class FlowController : MonoBehaviour
 			}
 		}
 
-		if(!gemDeleted)
+		if(gemDeleted)
+		{
+			AudioManager.Instance.PlayAudioItem(m_AudioGemDestroyed);
+		}
+		else
 		{
 			m_IsNeedToValidate = false;
 			if(m_GemSwapData == null)
@@ -246,6 +252,7 @@ public class FlowController : MonoBehaviour
 			else
 			{
 				m_GemSwapData.m_IsSwapHalfCompleted = true;
+				AudioManager.Instance.PlayAudioItem(m_AudioSwapError);
 				SwapGemData();
 			}
 		}
