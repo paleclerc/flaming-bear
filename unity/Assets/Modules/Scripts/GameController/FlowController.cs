@@ -15,6 +15,7 @@ public class FlowController : MonoBehaviour
 	private LevelInstance m_LevelInstance;
 	private MissionProgression m_Progression;
 	private LevelItem m_LevelItem;
+	private GameStartParam m_CurrentLevelParam;
 
 	public int RemainingMove {get {return CurrentMission.m_TotalMoveAvailable-m_Progression.m_Move;}}
 	public bool IsPaused {get {return m_IsPaused;}}
@@ -41,10 +42,10 @@ public class FlowController : MonoBehaviour
 
 		if(SceneManager.Instance != null)
 		{
-			GameStartParam param = (GameStartParam)SceneManager.Instance.GetParam();
-			if(param != null)
+			m_CurrentLevelParam = (GameStartParam)SceneManager.Instance.GetParam();
+			if(m_CurrentLevelParam != null)
 			{
-				levelId = param.m_LevelId;
+				levelId = m_CurrentLevelParam.m_LevelId;
 			}
 		}
 
@@ -79,7 +80,7 @@ public class FlowController : MonoBehaviour
 
 	public void ReplayLevel()
 	{
-		SceneManager.Instance.ChangeScene(SceneInfoConfigSO.Instance.SCENE_NAME.Gameplay);
+		SceneManager.Instance.ChangeScene(SceneInfoConfigSO.Instance.SCENE_NAME.Gameplay, m_CurrentLevelParam);
 	}
 
 	public void PauseGame ()

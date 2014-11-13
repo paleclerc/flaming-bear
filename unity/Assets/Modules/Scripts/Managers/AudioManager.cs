@@ -70,18 +70,21 @@ public class AudioManager : MonoBehaviour
 
 	void DeleteAudioSource (AudioSource a_AudioSource)
 	{
-		a_AudioSource.Stop();
-		m_ListAudioSource.Remove(a_AudioSource);
-		m_PoolAudioSource.Add(a_AudioSource);
-		if(a_AudioSource == m_NewMusic)
+		if(a_AudioSource != null)
 		{
-			m_NewMusic = null;
+			a_AudioSource.Stop();
+			m_ListAudioSource.Remove(a_AudioSource);
+			m_PoolAudioSource.Add(a_AudioSource);
+			if(a_AudioSource == m_NewMusic)
+			{
+				m_NewMusic = null;
+			}
+			if(a_AudioSource == m_CurrentMusic)
+			{
+				m_CurrentMusic = null;
+			}
+			a_AudioSource.gameObject.name = "POOLED";
 		}
-		if(a_AudioSource == m_CurrentMusic)
-		{
-			m_CurrentMusic = null;
-		}
-		a_AudioSource.gameObject.name = "POOLED";
 	}
 
 	AudioSource CreateNewAudioSource(string a_Name, AudioItem a_AudioItem)
@@ -134,14 +137,20 @@ public class AudioManager : MonoBehaviour
 		float toRemoveCurrent = m_CurrentMusic.volume / (float)m_SwapMusicDelayFrame;
 		float toAddNew = a_NewMusic.volume / (float)m_SwapMusicDelayFrame;
 		
-		a_NewMusic.volume = 0;
+		m_NewMusic.volume = 0;
 
 		for (int i = 0; i < m_SwapMusicDelayFrame; i++)
 		{
 			yield return 0;
 
-			m_CurrentMusic.volume -= toRemoveCurrent;
-			a_NewMusic.volume += toAddNew;
+			if(m_CurrentMusic != null)
+			{
+				m_CurrentMusic.volume -= toRemoveCurrent;
+			}
+			if(m_NewMusic != null)
+			{
+				m_NewMusic.volume += toAddNew;
+			}
 		}
 
 		DeleteAudioSource(m_CurrentMusic);

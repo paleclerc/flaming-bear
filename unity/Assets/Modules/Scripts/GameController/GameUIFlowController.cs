@@ -7,6 +7,9 @@ public class GameUIFlowController : MonoBehaviour
 	public GameObject m_ResultScreenLoseUIControllerPrefab;
 	public GameObject m_OptionMenuUIControllerPrefab;
 
+	public string m_WinMusic;
+	public string m_LoseMusic;
+
 	public GameObject m_GameUIControllerPrefab;
 	private GameUIController m_GameUIController;
 	private OptionMenuUIController m_OptionMenuUIController;
@@ -49,10 +52,12 @@ public class GameUIFlowController : MonoBehaviour
 		if(a_Mission.CheckMissionCompleted(a_Progression))
 		{
 			go = CreateScreen(m_ResultScreenWinUIControllerPrefab);
+			AudioManager.Instance.PlayAudioItem(m_WinMusic);
 		}
 		else
 		{
 			go = CreateScreen(m_ResultScreenLoseUIControllerPrefab);
+			AudioManager.Instance.PlayAudioItem(m_LoseMusic);
 		}
 
 		ResultScreenUIController controller = go.GetComponent<ResultScreenUIController>();
