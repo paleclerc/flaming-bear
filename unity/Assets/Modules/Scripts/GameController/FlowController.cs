@@ -16,12 +16,13 @@ public class FlowController : MonoBehaviour
 	private MissionProgression m_Progression;
 	private LevelItem m_LevelItem;
 	private GameStartParam m_CurrentLevelParam;
+	private int m_MissionCompleted;
 
 	public int RemainingMove {get {return CurrentMission.m_TotalMoveAvailable-m_Progression.m_Move;}}
 	public bool IsPaused {get {return m_IsPaused;}}
 	public MissionProgression MissionProgression {get {return m_Progression;}}
-	public Mission CurrentMission {get {return m_LevelItem.m_Mission;}
-	}
+	public Mission CurrentMission {get {return m_LevelItem.m_Mission;}}
+	public string m_AudioMissionCompleted;
 
 	// Use this for initialization
 	void Start ()
@@ -30,6 +31,7 @@ public class FlowController : MonoBehaviour
 		m_IsGameFinish = false;
 		m_ResultScreenDisplayed = false;
 		m_IsPaused = false;
+		m_MissionCompleted = 0;
 		m_Progression = new MissionProgression();
 		GetLevelItem();
 
@@ -110,6 +112,8 @@ public class FlowController : MonoBehaviour
 			}
 
 			ValidateGem();
+
+			CheckMissionCompleted();
 		}
 		else if(!m_IsInit)
 		{
@@ -165,14 +169,6 @@ public class FlowController : MonoBehaviour
 
 		m_GemSwapData.m_FirstGemSwap.ExchangeSlot(m_GemSwapData.m_SecondGemSwap);
 	}
-
-	/*public void UnregisterGemSlot(GemSlot a_GemSlot)
-	{
-		if(m_GemSlot.Contains(a_GemSlot))
-		{
-			m_GemSlot.Remove(a_GemSlot);
-		}
-	}*/
 
 	public void ResetValidation ()
 	{
@@ -328,6 +324,17 @@ public class FlowController : MonoBehaviour
 
 		m_LevelInstance.Init();
 		m_IsNeedToValidate = m_LevelInstance.CreateGems();
+	}
+
+	void CheckMissionCompleted ()
+	{
+
+		int newQuantity = m_LevelItem.m_Mission.QuantityMissionCompleted(m_Progression);
+		if(newQuantity != m_MissionCompleted)
+		{
+			AudioManager.Instance.PlayAudioItem(m_AudioMissionCompleted);
+			m_MissionCompleted = newQuantity;
+		}
 	}
 }
 

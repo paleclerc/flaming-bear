@@ -24,6 +24,24 @@ public class Mission
 		return true;
 	}
 
+	public int QuantityMissionCompleted(MissionProgression a_MissionProgression)
+	{
+		int quantity = 0;
+		foreach (MissionItem missionItem in m_ListMissionItem)
+		{
+			MissionTypeBase missionType = missionItem.GetCurrentMission();
+			if(missionType != null)
+			{
+				if(missionType.IsMissionTypeCompleted(a_MissionProgression))
+				{
+					quantity++;
+				}
+			}
+		}
+		
+		return quantity;
+	}
+
 	public int GetScoreToWin()
 	{
 		int score = 0;

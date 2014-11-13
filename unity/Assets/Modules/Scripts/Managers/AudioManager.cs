@@ -15,6 +15,9 @@ public class AudioManager : MonoBehaviour
 	#endregion
 
 	public int m_SwapMusicDelayFrame = 30;
+	public float m_CurrentVolumeMusic = 1;
+	public float m_CurrentVolumeSFX = 1;
+
 	private List<AudioSource> m_ListAudioSource;
 	private List<AudioSource> m_PoolAudioSource;
 
@@ -105,7 +108,15 @@ public class AudioManager : MonoBehaviour
 		audioSource.gameObject.name = a_Name;
 		audioSource.gameObject.transform.parent = transform;
 		audioSource.clip = a_AudioItem.m_AudioClip;
-		audioSource.volume = a_AudioItem.m_DefaultVolume;
+		if(a_AudioItem.m_Type == AudioItemType.MUSIC)
+		{
+			audioSource.volume = a_AudioItem.m_DefaultVolume * m_CurrentVolumeMusic;
+		}
+		else
+		{
+			audioSource.volume = a_AudioItem.m_DefaultVolume * m_CurrentVolumeSFX;
+		}
+
 
 		if(a_AudioItem.m_Type == AudioItemType.MUSIC)
 		{

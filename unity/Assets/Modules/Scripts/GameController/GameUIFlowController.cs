@@ -13,7 +13,6 @@ public class GameUIFlowController : MonoBehaviour
 	public GameObject m_GameUIControllerPrefab;
 	private GameUIController m_GameUIController;
 	private OptionMenuUIController m_OptionMenuUIController;
-
 	// Use this for initialization
 	void Start () 
 	{
