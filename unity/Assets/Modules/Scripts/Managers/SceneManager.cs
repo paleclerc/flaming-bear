@@ -85,7 +85,7 @@ public class SceneManager : MonoBehaviour
 	{
 		SceneInfoConfigItem config = SceneInfoConfigSO.Instance.GetSceneInfoByName(a_SceneName);
 		
-		if(config.m_MusicToPlayName != string.Empty)
+		if((config != null) && (config.m_MusicToPlayName != string.Empty))
 		{
 			AudioManager.Instance.PlayAudioItem(config.m_MusicToPlayName);
 		}

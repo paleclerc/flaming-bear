@@ -19,7 +19,7 @@ public class SceneInfoConfig : ScriptableObject {
 			}
 		}
 
-		Debug.LogError("ERROR :: Scene Info Not Found for scene name = "+a_SceneName);
+		Debug.LogWarning("Warning :: Scene Info Not Found for scene name = "+a_SceneName);
 		return null;
 	}
 
