@@ -93,9 +93,24 @@ public class FlowController : MonoBehaviour
 		GameController.Instance.GetGameUIFlowController.DisplayOptionMenu();
 	}
 
+	public void PowerupMenu ()
+	{
+		m_IsPaused = true;
+		GameController.Instance.GetGameUIFlowController.DisplayPowerupMenu();
+	}
+
 	public void ResumeGame ()
 	{
-		GameController.Instance.GetGameUIFlowController.RemoveOptionMenu();
+		GameController.Instance.GetGameUIFlowController.RemoveAllOtherMenu();
+		m_IsPaused = false;
+	}
+
+	public void OnPowerupUse (PowerupType a_PowerupType)
+	{
+		//TODO Integrate effect here
+		Debug.Log("PAL :: Powerup use :: " + a_PowerupType.ToString());
+
+		GameController.Instance.GetGameUIFlowController.RemoveAllOtherMenu();
 		m_IsPaused = false;
 	}
 	#endregion

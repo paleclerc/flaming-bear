@@ -6,6 +6,7 @@ public class GameUIFlowController : MonoBehaviour
 	public GameObject m_ResultScreenWinUIControllerPrefab;
 	public GameObject m_ResultScreenLoseUIControllerPrefab;
 	public GameObject m_OptionMenuUIControllerPrefab;
+	public GameObject m_PowerupUIControllerPrefab;
 
 	public string m_WinMusic;
 	public string m_LoseMusic;
@@ -13,6 +14,7 @@ public class GameUIFlowController : MonoBehaviour
 	public GameObject m_GameUIControllerPrefab;
 	private GameUIController m_GameUIController;
 	private OptionMenuUIController m_OptionMenuUIController;
+	private PowerupMenuUIController m_PowerupMenuUIController;
 	// Use this for initialization
 	void Start () 
 	{
@@ -34,6 +36,7 @@ public class GameUIFlowController : MonoBehaviour
 		m_GameUIController = go.GetComponent<GameUIController>();
 
 		m_GameUIController.OnOptionEvent += GameController.Instance.GetFlowController.PauseGame;
+		m_GameUIController.OnPowerupEvent += GameController.Instance.GetFlowController.PowerupMenu;
 		m_GameUIController.Init(GameController.Instance.GetFlowController.CurrentMission, GameController.Instance.GetFlowController.MissionProgression);
 	}
 
@@ -69,12 +72,25 @@ public class GameUIFlowController : MonoBehaviour
 		controller.Init(a_Mission, a_Progression);
 	}
 	#endregion
+	public void RemoveAllOtherMenu()
+	{
+		if(m_OptionMenuUIController != null)
+		{
+			Destroy(m_OptionMenuUIController.gameObject);
+		}
+		if(m_PowerupMenuUIController != null)
+		{
+			Destroy(m_PowerupMenuUIController.gameObject);
+		}
 
+	}
 	#region Option Menu
 	public void DisplayOptionMenu()
 	{
 		if(m_OptionMenuUIController == null)
 		{
+			RemoveAllOtherMenu();
+
 			GameObject go = CreateScreen(m_OptionMenuUIControllerPrefab);
 			m_OptionMenuUIController = go.GetComponent<OptionMenuUIController>();
 			m_OptionMenuUIController.OnExitEvent += GameController.Instance.GetFlowController.ReturnWorldMap;
@@ -82,13 +98,25 @@ public class GameUIFlowController : MonoBehaviour
 			m_OptionMenuUIController.Init();
 		}
 	}
+	#endregion
 
-	public void RemoveOptionMenu()
+	#region Option Menu
+	public void DisplayPowerupMenu()
 	{
-		if(m_OptionMenuUIController != null)
+		if(m_PowerupMenuUIController == null)
 		{
-			Destroy(m_OptionMenuUIController.gameObject);
+			RemoveAllOtherMenu();
+
+			GameObject go = CreateScreen(m_PowerupUIControllerPrefab);
+			m_PowerupMenuUIController = go.GetComponent<PowerupMenuUIController>();
+			m_PowerupMenuUIController.OnCancelEvent += GameController.Instance.GetFlowController.ResumeGame;
+			m_PowerupMenuUIController.OnPowerupEvent += GameController.Instance.GetFlowController.OnPowerupUse;
+			m_PowerupMenuUIController.Init();
 		}
 	}
+
+
 	#endregion
+
+
 }

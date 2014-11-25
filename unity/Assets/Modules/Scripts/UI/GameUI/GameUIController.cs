@@ -7,10 +7,12 @@ public class GameUIController : MonoBehaviour
 	public GameUIView m_View;
 	private GameUIModel m_Model;
 	public Action OnOptionEvent = delegate { };
+	public Action OnPowerupEvent = delegate { };
 
 	void Start()
 	{
 		m_View.OnOptionClick += OnOptionClick;
+		m_View.OnPowerupClick += OnPowerupClick;
 	}
 
 	public void Init(Mission a_mission, MissionProgression a_MissionProgression)
@@ -57,5 +59,10 @@ public class GameUIController : MonoBehaviour
 	void OnOptionClick ()
 	{
 		OnOptionEvent();
+	}
+
+	void OnPowerupClick ()
+	{
+		OnPowerupEvent();
 	}
 }

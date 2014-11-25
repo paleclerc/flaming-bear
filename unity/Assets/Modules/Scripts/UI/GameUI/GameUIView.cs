@@ -7,6 +7,7 @@ using System.Collections.Generic;
 public class GameUIView : MonoBehaviour 
 {
 	public Action OnOptionClick = delegate { };
+	public Action OnPowerupClick = delegate { };
 
 	public Text m_ScoreText;
 	public Text m_RemainingMoveText;
@@ -49,5 +50,10 @@ public class GameUIView : MonoBehaviour
 	public void OnOptionButtonClick()
 	{
 		OnOptionClick();
+	}
+
+	public void OnPowerupButtonClick()
+	{
+		OnPowerupClick();
 	}
 }

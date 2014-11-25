@@ -9,6 +9,7 @@ public class GameUIDebugTester : MonoBehaviour
 	void Start()
 	{
 		m_Controller.OnOptionEvent += OnOptionEvent;
+		m_Controller.OnPowerupEvent += OnPowerupEvent;
 	}
 	
 	void OnGUI() 
@@ -22,6 +23,11 @@ public class GameUIDebugTester : MonoBehaviour
 	void OnOptionEvent ()
 	{
 		Debug.Log ("PAL :: GameUIDebugTester :: OnOptionEvent");
+	}
+
+	void OnPowerupEvent ()
+	{
+		Debug.Log ("PAL :: GameUIDebugTester :: OnPowerupEvent");
 	}
 
 }
