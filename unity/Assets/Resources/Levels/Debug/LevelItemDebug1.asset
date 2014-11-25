@@ -19,4 +19,23 @@ MonoBehaviour:
     - m_MissionType: 1
       m_MissionTypeScore:
         m_MinScore: 10000
+      m_MissionTypeGemTypeDestroy:
+        m_TypeGem: 0
+        m_QuantityToDestroy: 0
+      m_MissionTypeGemDestroy:
+        m_QuantityToDestroy: 0
+      m_MissionQuantityInLine:
+        m_QuantityInLine: 3
+        m_QuantityToDestroy: 0
+    - m_MissionType: 2
+      m_MissionTypeScore:
+        m_MinScore: 10000
+      m_MissionTypeGemTypeDestroy:
+        m_TypeGem: 2
+        m_QuantityToDestroy: 11
+      m_MissionTypeGemDestroy:
+        m_QuantityToDestroy: 0
+      m_MissionQuantityInLine:
+        m_QuantityInLine: 3
+        m_QuantityToDestroy: 0
     m_TotalMoveAvailable: 5
