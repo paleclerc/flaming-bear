@@ -54,6 +54,11 @@ public class PowerupController : MonoBehaviour
 			BreakGemThreeByThree(a_GemSlot);
 			break;
 		}
+		case PowerupType.CHANGE_GEM_COLOR_RANDOM :
+		{
+			ChangeRandomColor(a_GemSlot);
+			break;
+		}
 		}
 
 	}
@@ -185,6 +190,20 @@ public class PowerupController : MonoBehaviour
 
 		GameController.Instance.GetFlowController.DeleteGemAndAddScore(result);
 		
+		StopWaitingPowerup();
+	}
+
+	void ChangeRandomColor (GemSlot a_GemSlot)
+	{
+		GemEnum gemType = a_GemSlot.m_Gem.m_GemInfo.m_GemType;
+
+		while(gemType == a_GemSlot.m_Gem.m_GemInfo.m_GemType)
+		{
+			a_GemSlot.DeleteAndRandomizeGem();
+		}
+
+		GameController.Instance.GetFlowController.NewGemDropped();
+
 		StopWaitingPowerup();
 	}
 }

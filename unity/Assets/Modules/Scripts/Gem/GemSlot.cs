@@ -475,5 +475,19 @@ public class GemSlot : MonoBehaviour {
 		m_Gem = gem;
 	}
 
+	public void DeleteAndRandomizeGem ()
+	{
+		if(m_Gem != null)
+		{
+			m_Gem.Dispose();
+			Destroy(m_Gem.gameObject);
+			m_Gem= null;
+		}
+
+		Gem gem = GemUtil.CreateGemAtPosition(m_IndexRandomDropTable, transform.position);
+		gem.InitAtGemSlot(this);
+		m_Gem = gem;
+	}
+
 }
 
