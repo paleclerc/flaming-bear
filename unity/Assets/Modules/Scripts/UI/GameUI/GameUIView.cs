@@ -12,6 +12,8 @@ public class GameUIView : MonoBehaviour
 	public Text m_ScoreText;
 	public Text m_RemainingMoveText;
 
+	public Text m_PowerupTarget;
+
 	public GameObject m_MissionContainer;
 	public GameObject m_MissionPanelUIPrefab;
 	private MissionPanelUIController m_MissionPanelUIController;
@@ -30,6 +32,8 @@ public class GameUIView : MonoBehaviour
 		{
 			UpdateMissionPanel(a_Model.m_MissionProgression);
 		}
+
+		m_PowerupTarget.enabled = a_Model.m_PowerupTargetEnabled;
 	}
 
 	void CreateMissionPanel (Mission a_Mission, MissionProgression a_MissionProgression)

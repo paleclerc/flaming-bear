@@ -20,19 +20,21 @@ public class PowerupController : MonoBehaviour
 	{
 		m_WaitingPowerup = a_PowerupType;
 
-		Debug.Log("PAL :: PowerupController :: UsePowerup :: " + m_WaitingPowerup.ToString());
-
 		if(m_WaitingPowerup == PowerupType.BREAK_RANDOM_GEM)
 		{
 			BreakRandomGem(m_BreakRandomGemQuantity);
+		}
+		else
+		{
+			GameController.Instance.GetGameUIFlowController.DisplayPowerupTarget(true);
 		}
 
 	}
 
 	public void StopWaitingPowerup()
 	{
-		Debug.Log("PAL :: StopWaitingPowerup");
 		m_WaitingPowerup = PowerupType.NONE;
+		GameController.Instance.GetGameUIFlowController.DisplayPowerupTarget(false);
 	}
 
 	public void ClickOnGemSlot (GemSlot a_GemSlot)

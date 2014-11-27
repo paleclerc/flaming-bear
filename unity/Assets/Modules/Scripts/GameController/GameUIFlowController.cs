@@ -118,5 +118,10 @@ public class GameUIFlowController : MonoBehaviour
 
 	#endregion
 
+	public void DisplayPowerupTarget (bool a_IsEnabled)
+	{
+		m_GameUIController.PowerupTarget(a_IsEnabled);
+	}
+
 
 }

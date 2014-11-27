@@ -48,6 +48,13 @@ public class GameUIController : MonoBehaviour
 		UpdateView();
 	}
 
+	public void PowerupTarget(bool a_Display)
+	{
+		m_Model.m_PowerupTargetEnabled = a_Display;
+
+		UpdateView();
+	}
+
 	//Only here as a testing purpose
 	public void InjectData (GameUIModel a_Model)
 	{
