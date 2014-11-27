@@ -59,6 +59,12 @@ public class PowerupController : MonoBehaviour
 			ChangeRandomColor(a_GemSlot);
 			break;
 		}
+		case PowerupType.BREAK_ALL_ONE_TYPE_GEM :
+		{
+			BreakAllGemSameType(a_GemSlot);
+			break;
+		}
+
 		}
 
 	}
@@ -204,6 +210,26 @@ public class PowerupController : MonoBehaviour
 
 		GameController.Instance.GetFlowController.NewGemDropped();
 
+		StopWaitingPowerup();
+	}
+
+	void BreakAllGemSameType(GemSlot a_GemSlot)
+	{
+		GemEnum gemType = a_GemSlot.m_Gem.m_GemInfo.m_GemType;
+
+		List<GemSlot> listGemSlot = GameController.Instance.GetFlowController.CurrentLevelInstance.m_ListGemSlot;
+		List<GemSlot> listToDelete = new List<GemSlot>();
+		
+		foreach (GemSlot gemSlot in listGemSlot) 
+		{
+			if(gemSlot.m_Gem != null && gemSlot.m_Gem.m_GemInfo.m_GemType == gemType)
+			{
+				listToDelete.Add(gemSlot);
+			}
+		}
+		
+		SendGemToDelete(listToDelete);
+		
 		StopWaitingPowerup();
 	}
 }
