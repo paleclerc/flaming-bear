@@ -6,29 +6,52 @@ public class PowerupController : MonoBehaviour
 {
 	public int m_BreakRandomGemQuantity = 5;
 
-	private bool m_WaitingPowerup;
+	private PowerupType m_WaitingPowerup;
 
-	public bool WaitingPowerup {get {return m_WaitingPowerup;}}
+	public bool IsWaitingPowerup {get {return m_WaitingPowerup != PowerupType.NONE;}}
 
 	// Use this for initialization
 	void Start ()
 	{
-		m_WaitingPowerup = false;
+		m_WaitingPowerup = PowerupType.NONE;
 	}
 
 	public void UsePowerup (PowerupType a_PowerupType)
 	{
-		m_WaitingPowerup = true;
-		Debug.Log("PAL :: PowerupController :: UsePowerup :: " + a_PowerupType.ToString());
-		switch (a_PowerupType) 
-		{
-		case PowerupType.BREAK_RANDOM_GEM :
+		m_WaitingPowerup = a_PowerupType;
+
+		Debug.Log("PAL :: PowerupController :: UsePowerup :: " + m_WaitingPowerup.ToString());
+
+		if(m_WaitingPowerup == PowerupType.BREAK_RANDOM_GEM)
 		{
 			BreakRandomGem(m_BreakRandomGemQuantity);
+		}
+
+	}
+
+	public void StopWaitingPowerup()
+	{
+		Debug.Log("PAL :: StopWaitingPowerup");
+		m_WaitingPowerup = PowerupType.NONE;
+	}
+
+	public void ClickOnGemSlot (GemSlot a_GemSlot)
+	{
+		switch (m_WaitingPowerup) 
+		{
+		case PowerupType.BREAK_GEM_LINE :
+		{
+			BreakGemLine(a_GemSlot);
 			break;
 		}
 		}
-		m_WaitingPowerup = false;
+	}
+
+	void SendGemToDelete(List<GemSlot> a_ListGemSlot)
+	{
+		List<List<GemSlot>> result = new List<List<GemSlot>>();
+		result.Add(a_ListGemSlot);
+		GameController.Instance.GetFlowController.DeleteGemAndAddScore(result);
 	}
 
 	void BreakRandomGem (int a_QuantityToBreak)
@@ -51,8 +74,35 @@ public class PowerupController : MonoBehaviour
 				}
 			}
 		}
-		List<List<GemSlot>> result = new List<List<GemSlot>>();
-		result.Add(randomList);
-		GameController.Instance.GetFlowController.DeleteGemAndAddScore(result);
+
+		SendGemToDelete(randomList);
+
+		StopWaitingPowerup();
+	}
+
+
+	void BreakGemLine (GemSlot a_GemSlot)
+	{
+		List<GemSlot> listToDelete = new List<GemSlot>();
+
+		listToDelete.Add(a_GemSlot);
+
+		GemSlot tempGemSlot = a_GemSlot.m_RightSlot;
+		while(tempGemSlot != null)
+		{
+			listToDelete.Add(tempGemSlot);
+			tempGemSlot = tempGemSlot.m_RightSlot;
+		}
+
+		tempGemSlot = a_GemSlot.m_LeftSlot;
+		while(tempGemSlot != null)
+		{
+			listToDelete.Add(tempGemSlot);
+			tempGemSlot = tempGemSlot.m_LeftSlot;
+		}
+
+		SendGemToDelete(listToDelete);
+
+		StopWaitingPowerup();
 	}
 }

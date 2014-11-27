@@ -20,7 +20,10 @@ public class InputController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-
+		if (Input.GetKeyDown(KeyCode.Escape)) 
+		{
+			GameController.Instance.GetPowerupController.StopWaitingPowerup();
+		}
 	}
 
 	public void ClickOnGem (Gem a_Gem)
@@ -28,6 +31,10 @@ public class InputController : MonoBehaviour
 		if(GameController.Instance.GetFlowController.GetIsCanSwap())
 		{
 			m_SelectedCursorInstance.SelectGem(a_Gem);
+		}
+		else if (GameController.Instance.GetPowerupController.IsWaitingPowerup)
+		{
+			GameController.Instance.GetPowerupController.ClickOnGemSlot(a_Gem.MyGemSlot);
 		}
 	}
 }

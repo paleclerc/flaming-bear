@@ -149,7 +149,7 @@ public class FlowController : MonoBehaviour
 
 	public bool GetIsCanSwap()
 	{
-		return !m_IsNeedToValidate && !m_IsGameFinish && !m_IsPaused && !GameController.Instance.GetPowerupController.WaitingPowerup;
+		return !m_IsNeedToValidate && !m_IsGameFinish && !m_IsPaused && !GameController.Instance.GetPowerupController.IsWaitingPowerup;
 	}
 
 	public void NewGemDropped()
