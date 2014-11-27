@@ -26,6 +26,8 @@ public class FlowController : MonoBehaviour
 	public string m_AudioSwapError;
 	public string m_AudioGemDestroyed;
 
+	public LevelInstance CurrentLevelInstance {get {return m_LevelInstance;}}
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -93,26 +95,28 @@ public class FlowController : MonoBehaviour
 		GameController.Instance.GetGameUIFlowController.DisplayOptionMenu();
 	}
 
-	public void PowerupMenu ()
-	{
-		m_IsPaused = true;
-		GameController.Instance.GetGameUIFlowController.DisplayPowerupMenu();
-	}
-
 	public void ResumeGame ()
 	{
 		GameController.Instance.GetGameUIFlowController.RemoveAllOtherMenu();
 		m_IsPaused = false;
 	}
 
+	public void PowerupMenu ()
+	{
+		if(GetIsCanSwap())
+		{
+			m_IsPaused = true;
+			GameController.Instance.GetGameUIFlowController.DisplayPowerupMenu();
+		}
+	}
+	
 	public void OnPowerupUse (PowerupType a_PowerupType)
 	{
-		//TODO Integrate effect here
-		Debug.Log("PAL :: Powerup use :: " + a_PowerupType.ToString());
-
+		GameController.Instance.GetPowerupController.UsePowerup(a_PowerupType);
 		GameController.Instance.GetGameUIFlowController.RemoveAllOtherMenu();
 		m_IsPaused = false;
 	}
+
 	#endregion
 
 	// Update is called once per frame
@@ -145,7 +149,7 @@ public class FlowController : MonoBehaviour
 
 	public bool GetIsCanSwap()
 	{
-		return !m_IsNeedToValidate && !m_IsGameFinish && !m_IsPaused;
+		return !m_IsNeedToValidate && !m_IsGameFinish && !m_IsPaused && !GameController.Instance.GetPowerupController.WaitingPowerup;
 	}
 
 	public void NewGemDropped()
@@ -223,42 +227,12 @@ public class FlowController : MonoBehaviour
 				}
 			}
 		}
-		bool gemDeleted = false;
-		foreach (List<GemSlot> listGemSlot in allResult)
-		{
-			AddGemLineCount(listGemSlot.Count);
-			foreach (GemSlot gemSlot in listGemSlot)
-			{
-				gemDeleted = true;
-				GemEnum gemDestroyed = gemSlot.DeleteGem();
-				AddGemDestroyCount(gemDestroyed);
 
-			}
-		}
-
-		if(gemDeleted)
-		{
-			AudioManager.Instance.PlayAudioItem(m_AudioGemDestroyed);
-		}
-		else
-		{
-			m_IsNeedToValidate = false;
-			if(m_GemSwapData == null)
-			{
-				bool checkExistMove = m_LevelInstance.ExistPossibleMove();
-				if(!checkExistMove)
-				{
-					m_LevelInstance.RandomizeGem();
-					m_IsNeedToValidate = true;
-				}
-			}
-		}
-
-		AddScore(allResult);
+		bool gemDeleted = DeleteGemAndAddScore(allResult);
 
 		if(!gemDeleted && m_GemSwapData != null)
 		{
-
+			
 			if(m_GemSwapData.m_IsSwapHalfCompleted)
 			{ 
 				m_GemSwapData = null;
@@ -279,6 +253,44 @@ public class FlowController : MonoBehaviour
 				RemoveMove();
 			}
 		}
+	}
+
+	public bool DeleteGemAndAddScore(List<List<GemSlot>> a_GemSlotLine)
+	{
+		bool gemDeleted = false;
+		foreach (List<GemSlot> listGemSlot in a_GemSlotLine)
+		{
+			AddGemLineCount(listGemSlot.Count);
+			foreach (GemSlot gemSlot in listGemSlot)
+			{
+				gemDeleted = true;
+				GemEnum gemDestroyed = gemSlot.DeleteGem();
+				AddGemDestroyCount(gemDestroyed);
+				
+			}
+		}
+		
+		if(gemDeleted)
+		{
+			AudioManager.Instance.PlayAudioItem(m_AudioGemDestroyed);
+		}
+		else
+		{
+			m_IsNeedToValidate = false;
+			if(m_GemSwapData == null)
+			{
+				bool checkExistMove = m_LevelInstance.ExistPossibleMove();
+				if(!checkExistMove)
+				{
+					m_LevelInstance.RandomizeGem();
+					m_IsNeedToValidate = true;
+				}
+			}
+		}
+		
+		AddScore(a_GemSlotLine);
+
+		return gemDeleted;
 	}
 
 	void AddGemLineCount (int a_QuantityInLine)

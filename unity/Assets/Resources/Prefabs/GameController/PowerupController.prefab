@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: _GameController
+  m_Name: PowerupController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,18 +36,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ab6dcf1739cde649a7a09b1cc835dbd, type: 3}
+  m_Script: {fileID: 11500000, guid: bb8a8f2063a3ff844acbc0280f8ce514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FlowControllerPrefab: {fileID: 100000, guid: 25a20c16467bb424fa6f858d1b3f3415,
-    type: 2}
-  m_InputControllerPrefab: {fileID: 100000, guid: 7fda71d959e0bd74abd3dd43e079b13c,
-    type: 2}
-  m_GameUIFlowControllerPrefab: {fileID: 100000, guid: c3a0f92f6c1a20b4f9c3f428968265b0,
-    type: 2}
-  m_PowerupControllerPrefab: {fileID: 100000, guid: 9bfef027bfc558d4899b4a2bb0a04d91,
-    type: 2}
-  m_IsControllerInitialized: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
