@@ -44,7 +44,18 @@ public class PowerupController : MonoBehaviour
 			BreakGemLine(a_GemSlot);
 			break;
 		}
+		case PowerupType.BREAK_GEM_COLUMN :
+		{
+			BreakGemColumn(a_GemSlot);
+			break;
 		}
+		case PowerupType.BREAK_THREE_BY_THREE_GEM :
+		{
+			BreakGemThreeByThree(a_GemSlot);
+			break;
+		}
+		}
+
 	}
 
 	void SendGemToDelete(List<GemSlot> a_ListGemSlot)
@@ -103,6 +114,77 @@ public class PowerupController : MonoBehaviour
 
 		SendGemToDelete(listToDelete);
 
+		StopWaitingPowerup();
+	}
+
+	void BreakGemColumn (GemSlot a_GemSlot)
+	{
+		List<GemSlot> listToDelete = new List<GemSlot>();
+		
+		listToDelete.Add(a_GemSlot);
+		
+		GemSlot tempGemSlot = a_GemSlot.m_UpSlot;
+		while(tempGemSlot != null)
+		{
+			listToDelete.Add(tempGemSlot);
+			tempGemSlot = tempGemSlot.m_UpSlot;
+		}
+		
+		tempGemSlot = a_GemSlot.m_DownSlot;
+		while(tempGemSlot != null)
+		{
+			listToDelete.Add(tempGemSlot);
+			tempGemSlot = tempGemSlot.m_DownSlot;
+		}
+		
+		SendGemToDelete(listToDelete);
+		
+		StopWaitingPowerup();
+	}
+
+	List<GemSlot> GetListLeftRight (GemSlot a_GemSlot)
+	{
+		List<GemSlot> listToSelect = new List<GemSlot>();
+		if(a_GemSlot != null)
+		{
+			listToSelect.Add(a_GemSlot);
+
+			if(a_GemSlot.m_LeftSlot != null)
+			{
+				listToSelect.Add(a_GemSlot.m_LeftSlot);
+			}
+
+			if(a_GemSlot.m_RightSlot != null)
+			{
+				listToSelect.Add(a_GemSlot.m_RightSlot);
+			}
+		}
+
+		return listToSelect;
+	}
+
+	void BreakGemThreeByThree (GemSlot a_GemSlot)
+	{
+		List<List<GemSlot>> result = new List<List<GemSlot>>();
+
+		List<GemSlot> listToDelete = GetListLeftRight(a_GemSlot);
+		if(listToDelete.Count > 0)
+		{
+			result.Add(listToDelete);
+		}
+		listToDelete = GetListLeftRight(a_GemSlot.m_UpSlot);
+		if(listToDelete.Count > 0)
+		{
+			result.Add(listToDelete);
+		}
+		listToDelete = GetListLeftRight(a_GemSlot.m_DownSlot);
+		if(listToDelete.Count > 0)
+		{
+			result.Add(listToDelete);
+		}
+
+		GameController.Instance.GetFlowController.DeleteGemAndAddScore(result);
+		
 		StopWaitingPowerup();
 	}
 }
