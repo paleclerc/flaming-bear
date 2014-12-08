@@ -21,6 +21,10 @@ public class GameController : MonoBehaviour
 	public GameObject m_PowerupControllerPrefab;
 	private PowerupController m_PowerupControllerComponent;
 	public PowerupController GetPowerupController {get {return m_PowerupControllerComponent;}}
+
+	public GameObject m_ComboControllerPrefab;
+	private ComboController m_ComboControllerComponent;
+	public ComboController GetComboController {get {return m_ComboControllerComponent;}}
 	#endregion
 
 	public Action OnGameControllerInitialized = delegate { };
@@ -47,6 +51,7 @@ public class GameController : MonoBehaviour
 		CreateController<InputController>(m_InputControllerPrefab, ref m_InputControllerComponent);
 		CreateController<GameUIFlowController>(m_GameUIFlowControllerPrefab, ref m_GameUIFlowControllerComponent);
 		CreateController<PowerupController>(m_PowerupControllerPrefab, ref m_PowerupControllerComponent);
+		CreateController<ComboController>(m_ComboControllerPrefab, ref m_ComboControllerComponent);
 
 		OnGameControllerInitialized();
 	}

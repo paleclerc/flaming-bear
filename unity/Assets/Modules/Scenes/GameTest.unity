@@ -309,6 +309,8 @@ MonoBehaviour:
     type: 2}
   m_PowerupControllerPrefab: {fileID: 100000, guid: 9bfef027bfc558d4899b4a2bb0a04d91,
     type: 2}
+  m_ComboControllerPrefab: {fileID: 100000, guid: ccfd5a660f088794f82d2ec4989ecf22,
+    type: 2}
   m_IsControllerInitialized: 0
 --- !u!4 &1962299631
 Transform:
